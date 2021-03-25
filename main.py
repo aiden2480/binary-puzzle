@@ -18,10 +18,10 @@ def main(index=0):
 
             if new != old:  # Test failed (new digits solved)
                 name = func.__name__.upper()
-                print(f"\n{colour.CYAN}GRID AFTER {name}{colour.RESET}")
+                print(f"{colour.CYAN}GRID AFTER {name}{colour.RESET}")
                 binary.print()
                 tests_passed = 0
-            else:  # Test passed (potentialyl finished the puzzle)
+            else:  # Test passed (potentially finished the puzzle)
                 tests_passed += 1
 
     # Confirm if puzzle solved logically
@@ -29,21 +29,21 @@ def main(index=0):
         print(f"{colour.GREEN}PUZZLE SOLVED{colour.RESET}")
         return
     
-    # Start guessing random numbers
+    # Puzzle incomplete, Start guessing random numbers (TODO)
 
 
-def time(func, iterations=10000):
+def time(func, iterations=1000):
     """
-        Current statistics (10000 tests)
-         - With print statement: 26362µs/n
-         - Without print statements: 1781µs/n
-         - Randomly generated (no print): 1857µs/n
+        Current statistics (1000 tests)
+         - With print statement:        93729.3206 μs/n
+         - Without print statements:     1064.4711 μs/n
+        88x faster without the print statements. 
     """
     
     elapsed = timeit(func, number=iterations)
     microseconds = round((elapsed/iterations)*1000000, 4)
 
-    print(f"{iterations=} {elapsed=} {microseconds} µs per iteration")
+    print(f"{iterations=} {elapsed=} {microseconds} μs per iteration")
 
 
 if __name__ == "__main__":
