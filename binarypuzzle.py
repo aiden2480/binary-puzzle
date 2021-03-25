@@ -1,5 +1,14 @@
 import random
-from colorama import Fore as colour
+
+try:
+    from colorama import Fore as colour
+    from colorama import init as colorama_init
+    colorama_init()
+except ModuleNotFoundError:
+    class Empty(object):
+        def __getattr__(self, attr):
+            return str()
+    colour = Empty()
 
 
 class BinaryPuzzle(object):

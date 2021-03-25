@@ -1,5 +1,4 @@
-from binarypuzzle import BinaryPuzzle
-from colorama import Fore as colour
+from binarypuzzle import BinaryPuzzle, colour
 from timeit import timeit
 
 
@@ -7,7 +6,7 @@ def main(index=0):
     binary = BinaryPuzzle.example(index)
 
     # Print initial puzzle
-    print("\n" * 100 + colour.GREEN + f"INITIAL GRID{colour.RESET}")
+    print(colour.GREEN + f"INITIAL GRID{colour.RESET}")
     binary.print()
 
     # Run tests to solve
@@ -19,7 +18,7 @@ def main(index=0):
 
             if new != old:  # Test failed (new digits solved)
                 name = func.__name__.upper()
-                print(f"\n{colour.BLUE}GRID AFTER {name}{colour.RESET}")
+                print(f"\n{colour.CYAN}GRID AFTER {name}{colour.RESET}")
                 binary.print()
                 tests_passed = 0
             else:  # Test passed (potentialyl finished the puzzle)
