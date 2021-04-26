@@ -1,61 +1,59 @@
-<!--  Add some general comments -->
-<!--  date, author and changes are good here -->
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Home - Binary Puzzle 6x6</title>
 	<link rel="icon" href="images/techEdIcon.png">
-    <script type="text/javascript">  
-        //  24/7/19 - this will probably just be a home page
-    </script>
     <style type="text/css">
-        body purple {
-            color: #D559D8;
+        /* 26/4/21 Update index page CSS for text and image styling */
+        * {
+            background-color: #23272A;
+            font-family: "Consolas";
+            color: #7289DA;
         }
 
-        .TextPurple {
-            color: #920F96;
+        a {
+            color:#6665d2;
+        }
+
+        div#question img {
+            border: 4px solid #7289DA;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: block;
         }
     </style>
 </head>
 <body>
+    <!-- 26/4/21 Index page revised with new CSS and structure -->
     <h1>Binary Puzzle Game (6x6)</h1>
-    <h2>Home page</h2>
-    <p>Links to versions are below:</p>
+    <h2>Aiden Gardner 11SDD6 2021</h2>
+    <br />
+
+    <!-- Version links -->
+    <h3>Links to versions are below</p>
     <p><a href="puz101.html" target="_blank">v1.01</a> - A blank shell ready for some unique, innovative code</p>
     <p><a href="puz102.html" target="_blank">v1.02</a> - A 36 grid can be loaded in through a "grunt" method</p>
-    <div class="TextPurple" id="TPurple">
+    <p><a href="puz103.html" target="_blank">v1.03</a> - Box borders cleaned and CSS/JS have been moved to seperate files and updated</p>
+    <br />
+    
+    <!-- Instructions -->
+    <div id="question">
         <p>The question we are solving is below in images:</p>
-    </div>
-    <p>
         <img src="images/22_QuestionSetup.png" width="604" height="884" alt="" />
-        <p>&nbsp;</p>
         <img src="images/22a-2D_arrays.png" width="600" height="134" alt="" />
-    </p>
-    <p>&nbsp;</p>
-    <p>
-        <img src="images/22b-DataTypes.png" width="580" height="44" alt="" /></p>
-    <p>&nbsp;</p>
-    <p>
-        <img src="images/22c-StructureChart.png" width="598" height="552" alt="" /></p>
-    <p>
-        <img src="images/22d-MainAlgorithm.png" width="596" height="210" alt="" /></p>
-    <p>&nbsp;</p>
-    <p>
-        <img src="images/22e-reusableCode.png" width="578" height="76" alt="" /></p>
-    <span class="TextPurple">A desk check is included to assist with what this code is actually doing: </span>
-    <p>
-        <img src="images/22fi-SolveRowPairs-DeskCheck.png" width="978" height="813" alt="" /></p>
-    <p>&nbsp;</p>
-    <p>
-        <img src="images/22fii-Lines6and7.png" width="576" height="40" alt="" /></p>
-    <p>&nbsp;</p>
-    <p>
-        <img src="images/22Gi-writeAlgorithm.png" width="598" height="132" alt="" /></p>
-    <p>
-        <img src="images/22Gii-driverForTesting.png" width="582" height="36" alt="" /></p>
-    <p>&nbsp;</p>
-    <p class="TextPurple">End of Question</p>
+        <img src="images/22b-DataTypes.png" width="580" height="44" alt="" />
+        <img src="images/22c-StructureChart.png" width="598" height="552" alt="" />
+        <img src="images/22d-MainAlgorithm.png" width="596" height="210" alt="" />
+        <img src="images/22e-reusableCode.png" width="578" height="76" alt="" />
+        <br />
+
+        <span>A desk check is included to assist with what this code is actually doing: </span>
+        <img src="images/22fi-SolveRowPairs-DeskCheck.png" width="978" height="813" alt="" />
+        <img src="images/22fii-Lines6and7.png" width="576" height="40" alt="" />
+        <img src="images/22Gi-writeAlgorithm.png" width="598" height="132" alt="" />
+        <img src="images/22Gii-driverForTesting.png" width="582" height="36" alt="" />
+        <p>End of Question</p>
+    </div>
 </body>
 </html>
