@@ -28,5 +28,4 @@ jobs:
           pyinstaller main.py --clean --onefile --name binarypuzzle
       - name: Run python file
         run: |
-          cd python
           python .github/workflows/buildpython.py
