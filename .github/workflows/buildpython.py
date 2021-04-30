@@ -3,6 +3,12 @@ import subprocess
 
 # Move exe file
 base = os.getcwd()
+
+try:
+    os.remove(f"{base}\\binarypuzzle.exe")
+except FileNotFoundError:
+    pass
+
 os.rename(f"{base}\\dist\\binarypuzzle.exe", f"{base}\\binarypuzzle.exe")
 print(f"* Moved {base}\\dist\\binarypuzzle.exe -> {base}\\binarypuzzle.exe")
 
