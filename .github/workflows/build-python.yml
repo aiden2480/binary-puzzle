@@ -29,4 +29,4 @@ jobs:
       - name: Run python file
         run: |
           cd python
-          python ~/.github/workflows/buildpython.py
+          python ../.github/workflows/buildpython.py
