@@ -25,7 +25,7 @@ jobs:
       - name: Create build
         run: |
           cd python
-          pyinstaller main.py --clean --onefile --name binarypuzzle
+          pyinstaller main.py --onefile --name binarypuzzle --hidden-import colorama
       - name: Run python file
         run: |
           cd python

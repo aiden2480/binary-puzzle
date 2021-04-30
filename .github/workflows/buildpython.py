@@ -13,7 +13,7 @@ if os.system("git config --global user.name"):
     os.system("git config --global user.name build-python")
 
 # Determine current commit hash
-raw = subprocess.check_output(['git', 'rev-parse', 'HEAD'])
+raw = subprocess.check_output(["git", "rev-parse", "HEAD"])
 sha = raw.strip().decode("ascii")[:7]
 print(f"* Current git commit is {sha}")
 
