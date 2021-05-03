@@ -72,10 +72,12 @@ function main() {
     /* On left/right click functions */
     function changeValue(button) {
         button.innerText = conversion[button.innerText] || "0";
+        window.current[Number(button.id[1])][Number(button.id[2])] = Number(button.innerText);
     }
     function contextMenu(button, e) {
         e.preventDefault();
         button.innerText = "";
+        window.current[Number(button.id[1])][Number(button.id[2])] = null;
     }
     
     /* Attach to buttons */
