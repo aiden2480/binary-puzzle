@@ -16,6 +16,7 @@ The Python version is located under [`python/`](./python) and should be accessed
 
 ## :memo: Future features
 - Cells that are updated by code temporarily flash green to draw attention before fading to blurple
+- Function that checks if the puzzle is correct when all cells are filled in
 - Save and load sessions from cookies Cookie savedata includes:
     - `version` (of the program to run the save on)
     - `date` - when the save was created
