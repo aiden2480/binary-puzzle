@@ -164,7 +164,7 @@ function solveTrios() {
 
 function solveQuota() {
     alert("Fills in the remaining squares if the quota of one of the digits has been hit.\n" +
-        "e.g. If a row already has three 0's filled in, the rest will be filled in with x's.");
+        "e.g. If a row already has three 0's filled in, the rest will be filled in with 1's.");
 }
 
 function solveFully() {
