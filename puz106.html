@@ -1,0 +1,186 @@
+﻿<!-- 26/4/21 Aiden - Create v1.02. Add grunt code to fill in the boxes -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>v1.06 Binary Puzzle 6x6</title>
+    
+    <!-- 26/4/21 Move JS & CSS to separate files -->
+    <link rel="stylesheet" type="text/css" href="css/puz106.css">    
+    <script type="text/javascript" src="js/puz106.js"></script>
+	<link rel="icon" href="images/techEdIcon.png">
+</head>
+<body onload="main()">
+    <h1>v1.06 Binary Puzzle Game (6x6)</h1>
+    <h2>v1.06: Code <code>Solve pairs</code> function</h2>
+    <p>Return to <a href="index.html">home</a></p>
+    <p>&nbsp;</p>
+    
+    <!-- Naming convention: B(0-5?row)(0-5?col)-->
+    <table class="gameboard">
+        <tr>
+            <td>
+                <button id="B00"></button>
+            </td>
+            <td>
+                <button id="B01"></button>
+            </td>
+            <td>
+                <button id="B02"></button>
+            </td>
+            <td>
+                <button id="B03"></button>
+            </td>
+            <td>
+                <button id="B04"></button>
+            </td>
+            <td>
+                <button id="B05"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="B10"></button>
+            </td>
+            <td>
+                <button id="B11"></button>
+            </td>
+            <td>
+                <button id="B12"></button>
+            </td>
+            <td>
+                <button id="B13"></button>
+            </td>
+            <td>
+                <button id="B14"></button>
+            </td>
+            <td>
+                <button id="B15"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="B20"></button>
+            </td>
+            <td>
+                <button id="B21"></button>
+            </td>
+            <td>
+                <button id="B22"></button>
+            </td>
+            <td>
+                <button id="B23"></button>
+            </td>
+            <td>
+                <button id="B24"></button>
+            </td>
+            <td>
+                <button id="B25"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="B30"></button>
+            </td>
+            <td>
+                <button id="B31"></button>
+            </td>
+            <td>
+                <button id="B32"></button>
+            </td>
+            <td>
+                <button id="B33"></button>
+            </td>
+            <td>
+                <button id="B34"></button>
+            </td>
+            <td>
+                <button id="B35"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="B40"></button>
+            </td>
+            <td>
+                <button id="B41"></button>
+            </td>
+            <td>
+                <button id="B42"></button>
+            </td>
+            <td>
+                <button id="B43"></button>
+            </td>
+            <td>
+                <button id="B44"></button>
+            </td>
+            <td>
+                <button id="B45"></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="B50"></button>
+            </td>
+            <td>
+                <button id="B51"></button>
+            </td>
+            <td>
+                <button id="B52"></button>
+            </td>
+            <td>
+                <button id="B53"></button>
+            </td>
+            <td>
+                <button id="B54"></button>
+            </td>
+            <td>
+                <button id="B55"></button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Options (tabulated to align) -->
+    <table id="optionstab">
+        <tr>
+            <td colspan="2">
+                <select id="changePuz" onchange="loadGrid(eval(value))">
+                    <option value="G01">Game 1 (Question Example)</option>
+                    <option value="G02">Game 2</option>
+                    <option value="G03">Game 3</option>
+                    <option value="G04">Game 4</option>
+                    <option value="G05">Game 5</option>
+                    <option value="G06">Game 6</option>
+                    <option value="G07">Game 7</option>
+                    <option value="G08">Game 8</option>
+                    <option value="G09">Game 9</option>
+                    <option value="G10">Game 10</option>
+                    <option value="G11">Game 11</option>
+                    <option value="G12">Game 12</option>
+                    <option value="G13">Game 13</option>
+                    <option value="GAR">Test 1-36 (Immutable)</option>
+                    <option value="GEM">Empty array</option>
+                </select>            
+            </td>
+            <td>
+                <button onclick="solveFully()">Solve fully</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="solvePairs()">Solve pairs</button>
+            </td>
+            <td>
+                <button onclick="solveTrios()">Solve trios</button>
+            </td>
+            <td>
+                <button onclick="solveQuota()">Solve quota</button>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Text information -->
+    <p>Click each cell to toggle between 1 and 0. Right click to clear.</p>
+    <p>Dark blurple cells are loaded from the template and are immutable</p>
+</body>
+</html>
