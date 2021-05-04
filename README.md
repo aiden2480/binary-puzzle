@@ -9,14 +9,18 @@
 </div>
 
 ## :bar_chart: Details
-Aiden Gardner 11SDD6 Year 11 Term 2 BinaryPuzzle assessment 2021. Solves 6x6 binary puzzles using three rules. Available in HTML and Python.
+Aiden Gardner 11SDD6 Year 11 Term 2 BinaryPuzzle assessment 2021.
+Solves 6x6 binary puzzles using three rules. Available in HTML and Python.
 
 ## :snake: Python
-The Python version is located under [`python/`](./python) and should be accessed via `cd python` before running `main.py` (due to relative imports). Dependencies may be installed through `pip install -r requirements.txt`. `Colorama` module is optional. An executable file is automatically created on each push, though it doesn't have colorama support enabled.
+The Python version is located under [`python/`](./python) and should be accessed via `cd python` before running `main.py` (due to relative imports).
+Dependencies may be installed through `pip install -r requirements.txt`. `Colorama` module is optional.
+An executable file is automatically created on each push, though it doesn't have colorama support enabled.
 
 ## :memo: Future features
 - [ ] Function that checks if the puzzle is correct when all cells are filled in
-- [ ] Save and load sessions from cookies Cookie savedata includes:
+- [ ] If the grid is still incomplete after passing the three tests, randomly guess cells until correct
+- [ ] Save and load sessions from cookie savedata includes:
     - `version` (of the program to run the save on)
     - `date` - when the save was created
     - `cell data` - current state of the cells

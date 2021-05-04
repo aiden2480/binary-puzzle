@@ -106,36 +106,29 @@ function solvePairs() {
             if (i > 0 && i < (size - 1)) {  /* The selected cell isn't at either end of the row */
                 let concatenation = `${current[j][i - 1]}${current[j][i]}${current[j][i + 1]}`;
 
-                /* Solve "0" pairs horizontally */
-                if (concatenation == "null00") {
+                /* Solve 00x/x00/11x/x11 horizontally */
+                if (concatenation.match(/null00/)) {        // x00
                     current[j][i - 1] = 1;
-                } else if (concatenation == "00null") {
+                } else if (concatenation.match(/00null/)) { // 00x
                     current[j][i + 1] = 1;
-                }
-
-                /* Solve "1" pairs horizontally */
-                if (concatenation == "null11") {
+                } else if (concatenation.match(/null11/)) { // x11
                     current[j][i - 1] = 0;
-                } else if (concatenation == "11null") {
+                } else if (concatenation.match(/11null/)) { // 11x
                     current[j][i + 1] = 0;
                 }
             }
 
-            // TODO: Solve vertically
             if (j > 0 && j < (size - 1)) {  /* The selected cell isn't at either end of the column */
                 let concatenation = `${current[j - 1][i]}${current[j][i]}${current[j + 1][i]}`;
 
-                /* Solve "0" pairs vertically */
-                if (concatenation == "null00") {
+                /* Solve 00x/x00/11x/x11 vertically */
+                if (concatenation.match(/null00/)) {        // x00
                     current[j - 1][i] = 1;
-                } else if (concatenation == "00null") {
+                } else if (concatenation.match(/00null/)) { // 00x
                     current[j + 1][i] = 1;
-                }
-
-                /* Solve "1" pairs vertically */
-                if (concatenation == "null11") {
+                } else if (concatenation.match(/null11/)) { // x11
                     current[j - 1][i] = 0;
-                } else if (concatenation == "11null") {
+                } else if (concatenation.match(/11null/)) { // 11x
                     current[j + 1][i] = 0;
                 }
             }
@@ -158,6 +151,7 @@ function solvePairs() {
     /* Log action */
     console.log(`Ran solvePairs(). ${updated} cell${updated != 1 ? "s" : ""} updated`);
     console.log(JSON.parse(JSON.stringify(current)));
+    return updated; // This will be useful later in `solveFully()`
 }
 
 function solveTrios() {
