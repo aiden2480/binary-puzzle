@@ -145,28 +145,25 @@ function solveTrios() {
     }
 
     var size = current.length;
+    var regex = /([01])null\1/;
+    // This regex will match a 0 or 1, then the word null,
+    // then the initial character again.
 
     for (let j = 0; j < size; j++) {        /* "j" is col pos */
         for (let i = 0; i < size; i++) {    /* "i" is row pos */
             if (i > 0 && i < (size - 1)) {  /* The selected cell isn't at either end of the row */
                 let concatenation = `${current[j][i - 1]}${current[j][i]}${current[j][i + 1]}`;
-
-                /* Solve 0x0/1x1 horizontally */
-                if (concatenation.match(/0null0/)) {        // 0x0
-                    current[j][i] = 1;
-                } else if (concatenation.match(/1null1/)) { // 1x1
-                    current[j][i] = 0;
+                var match = concatenation.match(regex);
+                if (match) {
+                    current[j][i] = match[1] == "0" ? 1 : 0;
                 }
             }
 
             if (j > 0 && j < (size - 1)) {  /* The selected cell isn't at either end of the column */
                 let concatenation = `${current[j - 1][i]}${current[j][i]}${current[j + 1][i]}`;
-
-                /* Solve 0x0/1x1 vertically */
-                if (concatenation.match(/0null0/)) {        // 0x0
-                    current[j][i] = 1;
-                } else if (concatenation.match(/1null1/)) { // 1x1
-                    current[j][i] = 0;
+                var match = concatenation.match(regex);
+                if (match) {
+                    current[j][i] = match[1] == "0" ? 1 : 0;
                 }
             }
         }
