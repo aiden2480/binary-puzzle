@@ -22,7 +22,7 @@ function loadGrid(grid) {
     var grid = convert1Dto2D(grid);
     
     console.log("Loading array:");
-    console.log(JSON.parse(JSON.stringify(grid))); // 2D array
+    console.log(JSON.parse(JSON.stringify(grid)));
     window.current = grid;
 
     for (let j = 0; j < size; j++) {
@@ -37,21 +37,21 @@ function loadGrid(grid) {
             } else {                    /* Clear old value */
                 cell.innerText = "";
                 cell.classList.remove("disabled");
+                cell.classList.remove("updatedCell");
                 cell.disabled = false;
             }
         }
     }
-
 }
 
 function convert1Dto2D(grid) {
     /* Converts a one-dimensional grid to a two-dimensional one */
-    var size = Math.sqrt(grid.length);
     var processed = [];
+    var size = Math.sqrt(grid.length);
     var copy = JSON.parse(JSON.stringify(grid));
 
     for (let j = 0; j < size; j++) {
-        var temp = [];
+        let temp = [];
         for (let i = 0; i < size; i++) {
             temp.push(copy.shift())
         }
@@ -66,23 +66,24 @@ function main() {
     loadGrid(eval(document.getElementById("changePuz").value));
 
     /* Attach click scripts to buttons */
-    let conversion = {0:1, 1:0};
-    let buttons = document.querySelectorAll("[id^='B']");
+    var conversion = {0:1, 1:0};
+    var buttons = document.querySelectorAll("[id^='B']");
     
     /* On left/right click functions */
     function changeValue(button) {
         button.innerText = conversion[button.innerText] || "0";
         window.current[Number(button.id[1])][Number(button.id[2])] = Number(button.innerText);
     }
+
     function contextMenu(button, e) {
         e.preventDefault();
         button.innerText = "";
         window.current[Number(button.id[1])][Number(button.id[2])] = null;
     }
-    
+
     /* Attach to buttons */
-    for (let i=0; i < buttons.length; i++) {
-        b = buttons[i];
+    for (let i = 0; i < buttons.length; i++) {
+        let b = buttons[i];
         b.onclick = function(){changeValue(this)};
         b.oncontextmenu = function(e){contextMenu(this, e)};
         b.type = "button";
@@ -92,8 +93,8 @@ function main() {
 /* Solving functions */
 function solvePairs() {
     if (window.current == undefined) {
-        alert("Current grid undefined. Exiting.");
-        // alert("Solves the pairs in the grid (11x -> 110)\nSolves 11x, x11, 00x, x00 horizontally and vertically");
+        alert("Current grid undefined. Unable to solve pairs. Load a grid before trying again.");
+        return;
     }
 
     var size = current.length;
@@ -102,7 +103,7 @@ function solvePairs() {
     for (let j = 0; j < size; j++) {        /* "j" is col pos */
         for (let i = 0; i < size; i++) {    /* "i" is row pos */
             if (i > 0 && i < (size - 1)) {  /* The selected cell isn't at either end of the row */
-                var concatenation = `${current[j][i - 1]}${current[j][i]}${current[j][i + 1]}`;
+                let concatenation = `${current[j][i - 1]}${current[j][i]}${current[j][i + 1]}`;
 
                 /* Solve "0" pairs horizontally */
                 if (concatenation == "null00") {
@@ -121,7 +122,7 @@ function solvePairs() {
 
             // TODO: Solve vertically
             if (j > 0 && j < (size - 1)) {  /* The selected cell isn't at either end of the column */
-                var concatenation = `${current[j - 1][i]}${current[j][i]}${current[j + 1][i]}`;
+                let concatenation = `${current[j - 1][i]}${current[j][i]}${current[j + 1][i]}`;
 
                 /* Solve "0" pairs vertically */
                 if (concatenation == "null00") {
@@ -143,10 +144,11 @@ function solvePairs() {
     /* Update grid */
     for (let j = 0; j < size; j++) {
         for (let i = 0; i < size; i++) {
-            var cell = document.querySelector(`button#B${j}${i}`);
+            let cell = document.querySelector(`button#B${j}${i}`);
             
             if (cell.textContent != String(current[j][i]) && current[j][i] != null) {
                 cell.textContent = current[j][i];
+                cell.classList.add("updatedCell"); // Adding this class will play animation
                 updated += 1;
             }
         }
@@ -155,7 +157,6 @@ function solvePairs() {
     /* Log action */
     console.log(`Ran solvePairs(). ${updated} cell${updated != 1 ? "s" : ""} updated`);
     console.log(JSON.parse(JSON.stringify(current)));
-
 }
 
 function solveTrios() {

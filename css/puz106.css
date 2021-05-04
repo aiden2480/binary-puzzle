@@ -1,3 +1,4 @@
+/* Global styling */
 * {
     background-color: #23272A;
     font-family: "Consolas";
@@ -13,7 +14,7 @@ code {
     border-radius: 3px;
 }
 
-/* Options table */
+/* Options table, buttons, and dropdown selector menu */
 table#optionstab {
     max-width: 100%;
     white-space: nowrap;
@@ -21,7 +22,6 @@ table#optionstab {
     padding: 0px;
 }
 
-/* Options buttons & dropdown */
 button:not([id^="B"]), select#changePuz {
     border-width: 2px;
     border-radius: 2px;
@@ -51,6 +51,16 @@ table.gameboard {
 /* Enabled cells */
 button[id^="B"]:not(.disabled) {
     cursor: pointer;
+}
+
+button.updatedCell {
+    animation-name: blurplefade;
+    animation-duration: 1s;
+}
+
+@keyframes blurplefade {
+    from {color: #29b765}
+    to {color: #7289DA}
 }
 
 button[id^="B"]:not(.disabled):hover {

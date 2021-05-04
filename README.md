@@ -15,10 +15,11 @@ Aiden Gardner 11SDD6 Year 11 Term 2 BinaryPuzzle assessment 2021. Solves 6x6 bin
 The Python version is located under [`python/`](./python) and should be accessed via `cd python` before running `main.py` (due to relative imports). Dependencies may be installed through `pip install -r requirements.txt`. `Colorama` module is optional. An executable file is automatically created on each push, though it doesn't have colorama support enabled.
 
 ## :memo: Future features
-- Cells that are updated by code temporarily flash green to draw attention before fading to blurple
-- Function that checks if the puzzle is correct when all cells are filled in
-- Save and load sessions from cookies Cookie savedata includes:
+- [ ] Function that checks if the puzzle is correct when all cells are filled in
+- [ ] Save and load sessions from cookies Cookie savedata includes:
     - `version` (of the program to run the save on)
     - `date` - when the save was created
     - `cell data` - current state of the cells
     - `cell template` - use to grey out template cells
+- [x] Cells that are updated by code temporarily flash green to draw attention before fading to blurple
+    - Added in version [v1.06](https://aiden2480.github.io/binary-puzzle/puz106.html)
