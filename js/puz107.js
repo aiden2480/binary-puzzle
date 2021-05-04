@@ -99,7 +99,6 @@ function solvePairs() {
     }
 
     var size = current.length;
-    var updated = 0;
 
     for (let j = 0; j < size; j++) {        /* "j" is col pos */
         for (let i = 0; i < size; i++) {    /* "i" is row pos */
@@ -135,6 +134,63 @@ function solvePairs() {
         }
     }
 
+    /* Update webpage */
+    return updateWebpage("solvePairs");
+}
+
+function solveTrios() {
+    if (window.current == undefined) {
+        alert("Current grid undefined. Unable to solve trios. Load a grid before trying again.");
+        return;
+    }
+
+    var size = current.length;
+
+    for (let j = 0; j < size; j++) {        /* "j" is col pos */
+        for (let i = 0; i < size; i++) {    /* "i" is row pos */
+            if (i > 0 && i < (size - 1)) {  /* The selected cell isn't at either end of the row */
+                let concatenation = `${current[j][i - 1]}${current[j][i]}${current[j][i + 1]}`;
+
+                /* Solve 0x0/1x1 horizontally */
+                if (concatenation.match(/0null0/)) {        // 0x0
+                    current[j][i] = 1;
+                } else if (concatenation.match(/1null1/)) { // 1x1
+                    current[j][i] = 0;
+                }
+            }
+
+            if (j > 0 && j < (size - 1)) {  /* The selected cell isn't at either end of the column */
+                let concatenation = `${current[j - 1][i]}${current[j][i]}${current[j + 1][i]}`;
+
+                /* Solve 0x0/1x1 vertically */
+                if (concatenation.match(/0null0/)) {        // 0x0
+                    current[j][i] = 1;
+                } else if (concatenation.match(/1null1/)) { // 1x1
+                    current[j][i] = 0;
+                }
+            }
+        }
+    }
+
+    /* Update webpage */
+    return updateWebpage("solveTrios");
+}
+
+function solveQuota() {
+    alert("Fills in the remaining squares if the quota of one of the digits has been hit.\n" +
+        "e.g. If a row already has three 0's filled in, the rest will be filled in with 1's.");
+}
+
+function solveFully() {
+    alert("Solves the puzzle using the three methods, stops if it has to guess");
+}
+
+/* Helper functions */
+function updateWebpage(parentFunc) {
+    /* This is called at the end of each solving function */
+    var updated = 0;
+    var size = current.length;
+
     /* Update grid */
     for (let j = 0; j < size; j++) {
         for (let i = 0; i < size; i++) {
@@ -149,20 +205,7 @@ function solvePairs() {
     }
 
     /* Log action */
-    console.log(`Ran solvePairs(). ${updated} cell${updated != 1 ? "s" : ""} updated`);
-    console.log(JSON.parse(JSON.stringify(current)));
+    console.log(`Ran ${parentFunc}(). ${updated} cell${updated != 1 ? "s" : ""} updated`);
+    console.log(JSON.parse(JSON.stringify(current))); // Deepcopy so it will print properly
     return updated; // This will be useful later in `solveFully()`
-}
-
-function solveTrios() {
-    alert("Solves the trios in the grid (1x1 -> 101)\nSolves 1x1 and 0x0 horizontally and vertically");
-}
-
-function solveQuota() {
-    alert("Fills in the remaining squares if the quota of one of the digits has been hit.\n" +
-        "e.g. If a row already has three 0's filled in, the rest will be filled in with 1's.");
-}
-
-function solveFully() {
-    alert("Solves the puzzle using the three methods, stops if it has to guess");
 }
