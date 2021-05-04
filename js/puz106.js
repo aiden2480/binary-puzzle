@@ -78,6 +78,7 @@ function main() {
     function contextMenu(button, e) {
         e.preventDefault();
         button.innerText = "";
+        button.classList.remove("updatedCell");
         window.current[Number(button.id[1])][Number(button.id[2])] = null;
     }
 
