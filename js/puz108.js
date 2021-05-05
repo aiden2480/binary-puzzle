@@ -203,6 +203,35 @@ function solveQuota() {
         }
     }
 
+    /* Solve quota vertically */
+    for (j = 0; j < size; j++) {
+        let col = [];
+        for (i = 0; i < size; i++) {
+            col.push(current[i][j]);
+        }
+
+        let zero = col.filter(x => x == 0).length;
+        let one = col.filter(x => x == 1).length;
+        
+        /* null -> 1 */
+        if (zero == (size / 2) && col.indexOf(null) != -1) {
+            do {
+                var index = col.indexOf(null);
+                current[index][j] = 1;
+                col[index] = 1; // Record change
+            } while (col.indexOf(null) != -1);
+        }
+
+        /* null -> 0 */
+        if (one == (size / 2) && col.indexOf(null) != -1) {
+            do {
+                var index = col.indexOf(null);
+                current[index][j] = 0;
+                col[index] = 0; // Record change
+            } while (col.indexOf(null) != -1);
+        }
+    }
+
     /* Update webpage */
     return updateWebpage("solveQuota");
 }
