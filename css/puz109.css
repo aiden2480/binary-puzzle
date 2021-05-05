@@ -1,0 +1,82 @@
+/* Global styling */
+* {
+    background-color: #23272A;
+    font-family: "Consolas";
+    color: #7289DA;
+}
+
+/* Extra text styling */
+code {
+    color: #6665d2;
+    background-color: #2C2F33;
+    padding: 1px;
+    font-size: 105%;
+    border-radius: 3px;
+}
+
+div#info * {
+    margin-bottom: 7px;
+}
+
+div#info *:not(h2) {
+    margin-top: 0px;
+}
+
+/* Options table, buttons, and dropdown selector menu */
+table#optionstab {
+    max-width: 100%;
+    white-space: nowrap;
+    border-collapse: collapse;
+    padding: 0px;
+}
+
+button:not([id^="B"]), select#changePuz {
+    border-width: 2px;
+    border-radius: 2px;
+    border-color: #7289DA;
+    cursor: pointer;
+}
+
+/* Gameboard styling */
+table.gameboard {
+    margin-bottom: 5px;
+}
+
+.gameboard, .gameboard td, .gameboard th, button[id^="B"] {
+    width: 45px;
+    height: 45px;
+    font-size: 30px;
+    vertical-align: middle;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #7289DA;
+    background-color: #2C2F33;
+    padding: 0;
+    border-collapse: collapse;
+}
+
+/* Enabled cells */
+button[id^="B"]:not(.disabled) {
+    cursor: pointer;
+}
+
+button.updatedCell {
+    animation-name: blurplefade;
+    animation-duration: 1s;
+}
+
+@keyframes blurplefade {
+    from {color: #29b765}
+    to {color: #7289DA}
+}
+
+button[id^="B"]:not(.disabled):hover {
+    background-color: #23272A;
+}
+
+/* Disabled cells */
+button[id^="B"].disabled {
+    font-weight: bold;
+    color: #6665d2;
+}

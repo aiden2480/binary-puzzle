@@ -23,10 +23,11 @@ An executable file is automatically created on each push, though it doesn't have
 - [ ] Add opengraph tags for discord embeds
 - [ ] Allow for variable puzzle size
     - Create table from js
-- [ ] Fix question image link navigating to helo fish
 - [ ] Reset grid to template button
 - [ ] Add a licence
-- [ ] Update python version with grid selector and example grids added in [v1.05](./js/puz105.js)
+- [ ] Functions `isGridFull` and `attachCellScript`
+    - If the grid is full, run some js to display a correct/incorrect message
+    - Move cell script attachment to different function to allow for variable grid size
 - [ ] Save and load sessions from cookie savedata includes:
     - `version` (of the program to run the save on)
     - `date` - when the save was created
