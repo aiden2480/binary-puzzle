@@ -14,21 +14,21 @@ var G12 = [0, null, null, null, null, null, null, 1, 1, null, null, null, null, 
 var G13 = [null, null, null, 1, null, null, null, null, null, null, null, 0, null, null, null, null, 0, 0, null, null, null, null, 1, null, 1, null, null, null, null, null, null, 0, null, 0, null, 0];
 var GAR = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36];
 var GEM = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
-var current; // Will be a two-dimensional array.
+var current;    // Will be a two-dimensional array. Synced with the HTML board
+var size;       // Much better to have this as a global variable than calculate it every time
 
 function loadGrid(grid) {
     /* 21/4/21 - Fills in the grid from a one-dimensional template (converts to 2D) */
-    var size = Math.sqrt(grid.length);
-    var grid = convert1Dto2D(grid);
+    window.size = Math.sqrt(grid.length);
+    window.current = convert1Dto2D(grid);
     
     console.log("Loading array:");
-    console.log(JSON.parse(JSON.stringify(grid)));
-    window.current = grid;
+    console.log(JSON.parse(JSON.stringify(current)));
 
     for (let j = 0; j < size; j++) {
         for (let i = 0; i < size; i++) {
             let cell = document.querySelector(`button#B${j}${i}`);
-            let value = grid[j][i];
+            let value = current[j][i];
     
             if (value != null) {        /* Write new value */
                 cell.innerText = value;
@@ -47,7 +47,6 @@ function loadGrid(grid) {
 function convert1Dto2D(grid) {
     /* Converts a one-dimensional grid to a two-dimensional one */
     var processed = [];
-    var size = Math.sqrt(grid.length);
     var copy = JSON.parse(JSON.stringify(grid));
 
     for (let j = 0; j < size; j++) {
@@ -98,8 +97,6 @@ function solvePairs() {
         return;
     }
 
-    var size = current.length;
-
     for (let j = 0; j < size; j++) {        /* "j" is col pos */
         for (let i = 0; i < size; i++) {    /* "i" is row pos */
             if (i > 0 && i < (size - 1)) {  /* The selected cell isn't at either end of the row */
@@ -144,10 +141,9 @@ function solveTrios() {
         return;
     }
 
-    var size = current.length;
+    // This regex will match a 0 or 1, then the
+    // word null, then the initial character again.
     var regex = /([01])null\1/;
-    // This regex will match a 0 or 1, then the word null,
-    // then the initial character again.
 
     for (let j = 0; j < size; j++) {        /* "j" is col pos */
         for (let i = 0; i < size; i++) {    /* "i" is row pos */
@@ -178,8 +174,6 @@ function solveQuota() {
         alert("Current grid undefined. Unable to solve quota. Load a grid before trying again.");
         return;
     }
-
-    var size = current.length;
 
     for (let j = 0; j < size; j++) {
         /* Create array slice of current column */
@@ -241,7 +235,6 @@ function solveFully() {
 function updateWebpage(parentFunc) {
     /* This is called at the end of each solving function */
     var updated = 0;
-    var size = current.length;
 
     /* Update grid */
     for (let j = 0; j < size; j++) {
