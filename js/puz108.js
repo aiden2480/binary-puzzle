@@ -181,53 +181,50 @@ function solveQuota() {
 
     var size = current.length;
 
-    /* Solve quota horizontally */
     for (let j = 0; j < size; j++) {
-        zero = current[j].filter(x => x == 0).length;
-        one = current[j].filter(x => x == 1).length;
-        
-        /* null -> 1 */
-        if (zero == (size / 2) && current[j].indexOf(null) != -1) {
-            do {
-                var index = current[j].indexOf(null);
-                current[j][index] = 1;
-            } while (current[j].indexOf(null) != -1);
-        }
-
-        /* null -> 0 */
-        if (one == (size / 2) && current[j].indexOf(null) != -1) {
-            do {
-                var index = current[j].indexOf(null);
-                current[j][index] = 0;
-            } while (current[j].indexOf(null) != -1);
-        }
-    }
-
-    /* Solve quota vertically */
-    for (j = 0; j < size; j++) {
+        /* Create array slice of current column */
         let col = [];
         for (i = 0; i < size; i++) {
             col.push(current[i][j]);
         }
 
-        let zero = col.filter(x => x == 0).length;
-        let one = col.filter(x => x == 1).length;
+        /* Calculate the number of ones and zeros in each row/col */
+        let horzero = current[j].filter(x => x == 0).length;
+        let horone = current[j].filter(x => x == 1).length;
+        let verzero = col.filter(x => x == 0).length;
+        let verone = col.filter(x => x == 1).length;
         
-        /* null -> 1 */
-        if (zero == (size / 2) && col.indexOf(null) != -1) {
+        /* Solve full zero quota horizontally */
+        if (horzero == (size / 2) && current[j].indexOf(null) != -1) {
             do {
-                var index = col.indexOf(null);
+                let index = current[j].indexOf(null);
+                current[j][index] = 1;
+            } while (current[j].indexOf(null) != -1);
+        }
+
+        /* Solve full one quota horizontally */
+        if (horone == (size / 2) && current[j].indexOf(null) != -1) {
+            do {
+                let index = current[j].indexOf(null);
+                current[j][index] = 0;
+            } while (current[j].indexOf(null) != -1);
+        }
+        
+        /* Solve full zero quota vertically */
+        if (verzero == (size / 2) && col.indexOf(null) != -1) {
+            do {
+                let index = col.indexOf(null);
                 current[index][j] = 1;
-                col[index] = 1; // Record change
+                col[index] = 1; // Record change to prevent hang
             } while (col.indexOf(null) != -1);
         }
 
-        /* null -> 0 */
-        if (one == (size / 2) && col.indexOf(null) != -1) {
+        /* Solve full one quota vertically */
+        if (verone == (size / 2) && col.indexOf(null) != -1) {
             do {
-                var index = col.indexOf(null);
+                let index = col.indexOf(null);
                 current[index][j] = 0;
-                col[index] = 0; // Record change
+                col[index] = 0; // Record change to prevent hang
             } while (col.indexOf(null) != -1);
         }
     }
