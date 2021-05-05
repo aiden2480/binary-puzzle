@@ -14,6 +14,14 @@ code {
     border-radius: 3px;
 }
 
+div#info * {
+    margin-bottom: 7px;
+}
+
+div#info *:not(h2) {
+    margin-top: 0px;
+}
+
 /* Options table, buttons, and dropdown selector menu */
 table#optionstab {
     max-width: 100%;

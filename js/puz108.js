@@ -22,6 +22,7 @@ function loadGrid(grid) {
     window.size = Math.sqrt(grid.length);
     window.current = convert1Dto2D(grid);
     
+    console.clear();
     console.log("Loading array:");
     console.log(JSON.parse(JSON.stringify(current)));
 
@@ -228,7 +229,30 @@ function solveQuota() {
 }
 
 function solveFully() {
-    alert("Solves the puzzle using the three methods, stops if it has to guess");
+    if (window.current == undefined) {
+        alert("Current grid undefined. Unable to solve quota. Load a grid before trying again.");
+        return;
+    }
+
+    var total = 0;
+    var passed = 0;
+    var tests = [solvePairs, solveTrios, solveQuota];
+
+    do {
+        for (i = 0; i < tests.length; i++) {
+            // Int number of cells changed returned by solving function
+            let changed = tests[i]();
+            if (changed) {
+                // This test affected the grid. Go back to the beginning
+                total += changed;
+                passed = 0;
+                break;
+            }
+            passed += 1;
+        }
+    } while (passed < tests.length);
+
+    console.log(`Ran solveFully(). ${total} total cell${total != 1 ? "s" : ""} updated`);
 }
 
 /* Helper functions */
