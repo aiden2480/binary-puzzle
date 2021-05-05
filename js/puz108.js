@@ -174,8 +174,37 @@ function solveTrios() {
 }
 
 function solveQuota() {
-    alert("Fills in the remaining squares if the quota of one of the digits has been hit.\n" +
-        "e.g. If a row already has three 0's filled in, the rest will be filled in with 1's.");
+    if (window.current == undefined) {
+        alert("Current grid undefined. Unable to solve quota. Load a grid before trying again.");
+        return;
+    }
+
+    var size = current.length;
+
+    /* Solve quota horizontally */
+    for (let j = 0; j < size; j++) {
+        zero = current[j].filter(x => x == 0).length;
+        one = current[j].filter(x => x == 1).length;
+        
+        /* null -> 1 */
+        if (zero == (size / 2) && current[j].indexOf(null) != -1) {
+            do {
+                var index = current[j].indexOf(null);
+                current[j][index] = 1;
+            } while (current[j].indexOf(null) != -1);
+        }
+
+        /* null -> 0 */
+        if (one == (size / 2) && current[j].indexOf(null) != -1) {
+            do {
+                var index = current[j].indexOf(null);
+                current[j][index] = 0;
+            } while (current[j].indexOf(null) != -1);
+        }
+    }
+
+    /* Update webpage */
+    return updateWebpage("solveQuota");
 }
 
 function solveFully() {
