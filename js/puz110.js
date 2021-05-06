@@ -145,8 +145,6 @@ function solveTrios() {
 }
 
 function solveQuota() {
-    // FIXME: Not solving quota on 14x14 grid?????
-    // Need to seperate between col and row in ID as they are no longer just a single digit
     if (window.current == undefined) {
         alert("Current grid undefined. Unable to solve quota. Load a grid before trying again.");
         return;
@@ -311,7 +309,7 @@ function attachClickScript() {
     }
 
     function contextMenu(button, e) {
-        var decon = button.id.replace("R", "").split("C")
+        var decon = button.id.replace("R", "").split("C");
         
         e.preventDefault();
         button.innerText = "";
