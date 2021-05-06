@@ -20,6 +20,14 @@ var size;       // Much better to have this as a global variable than calculate 
 
 function loadGrid(grid) {
     /* 21/4/21 - Fills in the grid from a one-dimensional template (converts to 2D) */
+    if (!Number.isInteger(Math.sqrt(grid.length))) {
+        console.error(`Invalid grid (length ${grid.length}):`);
+        console.log(grid);
+        
+        alert("The selected grid couldn't be loaded. It does not contain a square number of elements.");
+        return;
+    }
+
     window.size = Math.sqrt(grid.length);
     window.current = convert1Dto2D(grid);
     
@@ -53,30 +61,8 @@ function onPageLoad() {
     /* Load grid in selector */
     loadGrid(eval(document.getElementById("changePuz").value));
 
-    /* Attach click scripts to buttons */
-    var conversion = {0:1, 1:0};
-    var buttons = document.querySelectorAll("[id^='B']");
-    
-    /* On left/right click functions */
-    function changeValue(button) {
-        button.innerText = conversion[button.innerText] || "0";
-        window.current[Number(button.id[1])][Number(button.id[2])] = Number(button.innerText);
-    }
-
-    function contextMenu(button, e) {
-        e.preventDefault();
-        button.innerText = "";
-        button.classList.remove("updatedCell");
-        window.current[Number(button.id[1])][Number(button.id[2])] = null;
-    }
-
-    /* Attach to buttons */
-    for (let i = 0; i < buttons.length; i++) {
-        let b = buttons[i];
-        b.onclick = function(){changeValue(this)};
-        b.oncontextmenu = function(e){contextMenu(this, e)};
-        b.type = "button";
-    }
+    /* Attach click script to cells */
+    attachClickScript();
 }
 
 /* Solving functions */
@@ -284,6 +270,7 @@ function convert1Dto2D(grid) {
 }
 
 function createTable() {
+    /* Create an appropriately sized table for the grid */
     var table = document.getElementById("gameboard");
 
     // Check if table is already correct size, return
@@ -302,5 +289,35 @@ function createTable() {
             tr.appendChild(td);
         }
         table.appendChild(tr);
+    }
+
+    /* Reattach click script to buttons */
+    attachClickScript();
+}
+
+function attachClickScript() {
+    /* Attach click scripts to buttons */
+    var conversion = {0:1, 1:0};
+    var buttons = document.querySelectorAll("[id^='B']");
+    
+    /* On left/right click functions */
+    function changeValue(button) {
+        button.innerText = conversion[button.innerText] || "0";
+        window.current[Number(button.id[1])][Number(button.id[2])] = Number(button.innerText);
+    }
+
+    function contextMenu(button, e) {
+        e.preventDefault();
+        button.innerText = "";
+        button.classList.remove("updatedCell");
+        window.current[Number(button.id[1])][Number(button.id[2])] = null;
+    }
+
+    /* Attach to buttons */
+    for (let i = 0; i < buttons.length; i++) {
+        let b = buttons[i];
+        b.onclick = function(){changeValue(this)};
+        b.oncontextmenu = function(e){contextMenu(this, e)};
+        b.type = "button";
     }
 }
