@@ -38,11 +38,11 @@ button:not([id^="B"]), select#changePuz {
 }
 
 /* Gameboard styling */
-table.gameboard {
+table#gameboard {
     margin-bottom: 5px;
 }
 
-.gameboard, .gameboard td, .gameboard th, button[id^="B"] {
+#gameboard, #gameboard td, #gameboard th, button[id^="B"] {
     width: 45px;
     height: 45px;
     font-size: 30px;

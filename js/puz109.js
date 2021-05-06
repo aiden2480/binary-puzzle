@@ -1,19 +1,20 @@
-// 3/5/21 - Added more grids
-var G01 = [1, null, 0, null, 0, 0, null, 1, null, 0, 0, null, null, null, null, null, null, 0, 0, null, null, 1, null, null, 1, 0, null, 1, 1, null, null, 0, null, null, 1, 1];
-var G02 = [null, null, null, null, null, null, null, 1, null, null, null, 1, null, 1, null, 1, null, null, null, null, 0, null, null, 1, null, 1, null, null, null, null, null, null, null, 0, 0, null];
-var G03 = [null, 1, null, null, null, null, null, null, null, 0, null, 0, null, 0, null, 0, null, null, 1, null, null, null, 1, null, null, null, null, null, 0, null, 0, null, null, null, null, null];
-var G04 = [0, null, null, 1, null, null, null, 0, null, null, null, 1, null, null, 1, 1, null, null, null, null, null, null, 1, 1, null, null, null, null, null, 0, 0, null, 1, null, 1, null];
-var G05 = [null, null, null, null, null, null, null, 1, null, 1, null, 1, null, null, 0, 0, null, null, 0, null, null, null, null, null, null, null, null, null, 1, 1, null, null, 0, null, 0, null];
-var G06 = [null, null, null, null, null, 0, null, 1, null, null, 1, null, null, null, null, 0, null, null, null, null, 1, null, null, null, null, null, 1, null, null, null, null, 0, null, null, 1, null];
-var G07 = [1, null, 1, null, null, 1, null, null, null, 1, null, null, 0, null, null, 1, 0, null, null, null, 1, null, null, null, null, 1, null, null, null, null, 1, null, null, 1, 1, null];
-var G08 = [1, 1, null, null, null, null, 1, null, null, 1, null, null, null, null, null, null, 0, null, 0, null, 0, null, null, null, null, null, null, null, null, null, null, null, 0, null, 0, null];
-var G09 = [null, null, 0, 0, null, 0, null, null, null, null, null, null, null, 1, 1, null, null, null, null, null, null, null, 0, 0, null, null, 1, null, 0, null, null, null, null, null, null, null];
-var G10 = [null, null, null, null, null, null, null, 1, null, null, null, null, null, null, 0, null, 1, 1, null, null, 0, null, null, null, null, 0, null, null, 1, null, null, null, null, null, null, null];
-var G11 = [null, 1, null, 1, null, 1, null, null, null, null, null, null, 0, 0, null, null, null, null, null, null, null, null, 1, null, 0, null, 1, 0, null, null, null, 1, null, null, null, null];
-var G12 = [0, null, null, null, null, null, null, 1, 1, null, null, null, null, null, 1, null, null, null, null, null, null, 0, null, null, 0, null, null, 1, null, null, null, null, null, null, null, null];
-var G13 = [null, null, null, 1, null, null, null, null, null, null, null, 0, null, null, null, null, 0, 0, null, null, null, null, 1, null, 1, null, null, null, null, null, null, 0, null, 0, null, 0];
-var GAR = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36];
-var GEM = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+// Grid format: G(size: one digit)(array no: two digits)
+var G601 = [1, null, 0, null, 0, 0, null, 1, null, 0, 0, null, null, null, null, null, null, 0, 0, null, null, 1, null, null, 1, 0, null, 1, 1, null, null, 0, null, null, 1, 1];
+var G602 = [null, null, null, null, null, null, null, 1, null, null, null, 1, null, 1, null, 1, null, null, null, null, 0, null, null, 1, null, 1, null, null, null, null, null, null, null, 0, 0, null];
+var G603 = [null, 1, null, null, null, null, null, null, null, 0, null, 0, null, 0, null, 0, null, null, 1, null, null, null, 1, null, null, null, null, null, 0, null, 0, null, null, null, null, null];
+var G604 = [0, null, null, 1, null, null, null, 0, null, null, null, 1, null, null, 1, 1, null, null, null, null, null, null, 1, 1, null, null, null, null, null, 0, 0, null, 1, null, 1, null];
+var G605 = [null, null, null, null, null, null, null, 1, null, 1, null, 1, null, null, 0, 0, null, null, 0, null, null, null, null, null, null, null, null, null, 1, 1, null, null, 0, null, 0, null];
+var G606 = [null, null, null, null, null, 0, null, 1, null, null, 1, null, null, null, null, 0, null, null, null, null, 1, null, null, null, null, null, 1, null, null, null, null, 0, null, null, 1, null];
+var G607 = [1, null, 1, null, null, 1, null, null, null, 1, null, null, 0, null, null, 1, 0, null, null, null, 1, null, null, null, null, 1, null, null, null, null, 1, null, null, 1, 1, null];
+var G608 = [1, 1, null, null, null, null, 1, null, null, 1, null, null, null, null, null, null, 0, null, 0, null, 0, null, null, null, null, null, null, null, null, null, null, null, 0, null, 0, null];
+var G609 = [null, null, 0, 0, null, 0, null, null, null, null, null, null, null, 1, 1, null, null, null, null, null, null, null, 0, 0, null, null, 1, null, 0, null, null, null, null, null, null, null];
+var G610 = [null, null, null, null, null, null, null, 1, null, null, null, null, null, null, 0, null, 1, 1, null, null, 0, null, null, null, null, 0, null, null, 1, null, null, null, null, null, null, null];
+var G611 = [null, 1, null, 1, null, 1, null, null, null, null, null, null, 0, 0, null, null, null, null, null, null, null, null, 1, null, 0, null, 1, 0, null, null, null, 1, null, null, null, null];
+var G612 = [0, null, null, null, null, null, null, 1, 1, null, null, null, null, null, 1, null, null, null, null, null, null, 0, null, null, 0, null, null, 1, null, null, null, null, null, null, null, null];
+var G613 = [null, null, null, 1, null, null, null, null, null, null, null, 0, null, null, null, null, 0, 0, null, null, null, null, 1, null, 1, null, null, null, null, null, null, 0, null, 0, null, 0];
+var G801 = [null, null, null, null, null, null, null, 0, null, 0, 0, null, null, 1, null, null, null, 0, null, null, null, 1, null, 0, null, null, 1, null, null, null, null, null, 0, 0, null, 1, null, null, 1, null, null, null, null, null, 1, null, null, null, 1, 1, null, null, null, 0, null, 1, null, 1, null, null, null, null, null, 1];
+var G141 = [null, 0, 0, null, null, 1, 1, null, 1, null, 0, 0, null, 0, null, null, null, null, null, null, null, null, null, null, null, 0, null, null, null, 0, 0, null, null, null, null, 1, 1, null, null, null, 1, null, null, 0, null, 1, 1, null, 0, null, null, null, 0, null, null, null, null, null, null, null, 1, null, null, null, null, null, null, null, null, null, 0, 1, null, null, null, null, null, null, 0, null, 1, 1, null, 1, null, null, null, 0, null, null, 1, null, null, 0, null, null, null, null, null, 0, null, null, null, null, null, null, null, null, null, null, null, 0, null, null, null, null, 1, null, 0, 0, null, 1, null, null, 0, 0, null, 1, 1, null, null, null, 0, 0, null, null, null, null, 0, null, 0, null, null, null, null, null, null, null, null, null, null, 1, null, null, null, 0, null, null, null, null, null, null, null, null, 1, null, null, null, 1, null, null, null, null, null, 1, 1, null, 0, null, 0, null, 0, null, 1, null, null, 0, null, null, 1, null, null, null, 0, null, 1];
+var GEMP = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
 var current;    // Will be a two-dimensional array. Synced with the HTML board
 var size;       // Much better to have this as a global variable than calculate it every time
 
@@ -25,6 +26,9 @@ function loadGrid(grid) {
     console.clear();
     console.log("Loading array:");
     console.log(JSON.parse(JSON.stringify(current)));
+
+    /* Create a table of the appropriate size */
+    createTable();
 
     for (let j = 0; j < size; j++) {
         for (let i = 0; i < size; i++) {
@@ -45,23 +49,7 @@ function loadGrid(grid) {
     }
 }
 
-function convert1Dto2D(grid) {
-    /* Converts a one-dimensional grid to a two-dimensional one */
-    var processed = [];
-    var copy = JSON.parse(JSON.stringify(grid));
-
-    for (let j = 0; j < size; j++) {
-        let temp = [];
-        for (let i = 0; i < size; i++) {
-            temp.push(copy.shift())
-        }
-        processed.push(temp);
-    }
-
-    return processed;
-}
-
-function main() {
+function onPageLoad() {
     /* Load grid in selector */
     loadGrid(eval(document.getElementById("changePuz").value));
 
@@ -179,7 +167,7 @@ function solveQuota() {
     for (let j = 0; j < size; j++) {
         /* Create array slice of current column */
         let col = [];
-        for (i = 0; i < size; i++) {
+        for (let i = 0; i < size; i++) {
             col.push(current[i][j]);
         }
 
@@ -239,7 +227,7 @@ function solveFully() {
     var tests = [solvePairs, solveTrios, solveQuota];
 
     do {
-        for (i = 0; i < tests.length; i++) {
+        for (let i = 0; i < tests.length; i++) {
             // Int number of cells changed returned by solving function
             let changed = tests[i]();
             if (changed) {
@@ -277,4 +265,42 @@ function updateWebpage(parentFunc) {
     console.log(`Ran ${parentFunc}(). ${updated} cell${updated != 1 ? "s" : ""} updated`);
     console.log(JSON.parse(JSON.stringify(current))); // Deepcopy so it will print properly
     return updated; // This will be useful later in `solveFully()`
+}
+
+function convert1Dto2D(grid) {
+    /* Converts a one-dimensional grid to a two-dimensional one */
+    var processed = [];
+    var copy = JSON.parse(JSON.stringify(grid));
+
+    for (let j = 0; j < size; j++) {
+        let temp = [];
+        for (let i = 0; i < size; i++) {
+            temp.push(copy.shift())
+        }
+        processed.push(temp);
+    }
+
+    return processed;
+}
+
+function createTable() {
+    var table = document.getElementById("gameboard");
+
+    // Check if table is already correct size, return
+    if (table.children.length == size) {
+        return;
+    }
+
+    table.innerHTML = "";
+    for (let j = 0; j < size; j++) {
+        tr = document.createElement("tr");
+        for (let i = 0; i < size; i++) {
+            td = document.createElement("td");
+            button = document.createElement("button");
+            button.id = `B${j}${i}`;
+            td.appendChild(button);
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
 }

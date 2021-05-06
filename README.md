@@ -21,8 +21,6 @@ An executable file is automatically created on each push, though it doesn't have
 - [ ] Function that checks if the puzzle is correct when all cells are filled in
 - [ ] If the grid is still incomplete after passing the three tests, randomly guess cells until correct
 - [ ] Add opengraph tags for discord embeds
-- [ ] Allow for variable puzzle size
-    - Create table from js
 - [ ] Reset grid to template button
 - [ ] Add a licence
 - [ ] Functions `isGridFull` and `attachCellScript`
@@ -35,3 +33,6 @@ An executable file is automatically created on each push, though it doesn't have
     - `cell template` - use to grey out template cells
 - [x] Cells that are updated by code temporarily flash green to draw attention before fading to blurple
     - Added in version [v1.06](https://aiden2480.github.io/binary-puzzle/puz106.html)
+- [x] Allow for variable puzzle size
+    - Added in version [v1.09](https://aiden2480.github.io/binary-puzzle/puz109.html)
+    - Create table from js
