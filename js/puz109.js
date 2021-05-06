@@ -40,7 +40,7 @@ function loadGrid(grid) {
 
     for (let j = 0; j < size; j++) {
         for (let i = 0; i < size; i++) {
-            let cell = document.querySelector(`button#B${j}${i}`);
+            let cell = document.querySelector(`button#R${j}C${i}`);
             let value = current[j][i];
     
             if (value != null) {        /* Write new value */
@@ -145,6 +145,8 @@ function solveTrios() {
 }
 
 function solveQuota() {
+    // FIXME: Not solving quota on 14x14 grid?????
+    // Need to seperate between col and row in ID as they are no longer just a single digit
     if (window.current == undefined) {
         alert("Current grid undefined. Unable to solve quota. Load a grid before trying again.");
         return;
@@ -237,7 +239,7 @@ function updateWebpage(parentFunc) {
     /* Update grid */
     for (let j = 0; j < size; j++) {
         for (let i = 0; i < size; i++) {
-            let cell = document.querySelector(`button#B${j}${i}`);
+            let cell = document.querySelector(`button#R${j}C${i}`);
             
             if (cell.textContent != String(current[j][i]) && current[j][i] != null) {
                 cell.textContent = current[j][i];
@@ -284,7 +286,7 @@ function createTable() {
         for (let i = 0; i < size; i++) {
             td = document.createElement("td");
             button = document.createElement("button");
-            button.id = `B${j}${i}`;
+            button.id = `R${j}C${i}`;
             td.appendChild(button);
             tr.appendChild(td);
         }
@@ -298,19 +300,23 @@ function createTable() {
 function attachClickScript() {
     /* Attach click scripts to buttons */
     var conversion = {0:1, 1:0};
-    var buttons = document.querySelectorAll("[id^='B']");
+    var buttons = document.querySelectorAll("[id^='R']");
     
     /* On left/right click functions */
     function changeValue(button) {
+        var decon = button.id.replace("R", "").split("C")
+        
         button.innerText = conversion[button.innerText] || "0";
-        window.current[Number(button.id[1])][Number(button.id[2])] = Number(button.innerText);
+        window.current[Number(decon[0])][Number(decon[1])] = Number(button.innerText);
     }
 
     function contextMenu(button, e) {
+        var decon = button.id.replace("R", "").split("C")
+        
         e.preventDefault();
         button.innerText = "";
         button.classList.remove("updatedCell");
-        window.current[Number(button.id[1])][Number(button.id[2])] = null;
+        window.current[Number(decon[0])][Number(decon[1])] = null;
     }
 
     /* Attach to buttons */

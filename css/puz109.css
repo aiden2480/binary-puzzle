@@ -30,7 +30,7 @@ table#optionstab {
     padding: 0px;
 }
 
-button:not([id^="B"]), select#changePuz {
+button:not([id^="R"]), select#changePuz {
     border-width: 2px;
     border-radius: 2px;
     border-color: #7289DA;
@@ -42,7 +42,7 @@ table#gameboard {
     margin-bottom: 5px;
 }
 
-#gameboard, #gameboard td, #gameboard th, button[id^="B"] {
+#gameboard, #gameboard td, #gameboard th, button[id^="R"] {
     width: 45px;
     height: 45px;
     font-size: 30px;
@@ -57,7 +57,7 @@ table#gameboard {
 }
 
 /* Enabled cells */
-button[id^="B"]:not(.disabled) {
+button[id^="R"]:not(.disabled) {
     cursor: pointer;
 }
 
@@ -71,12 +71,12 @@ button.updatedCell {
     to {color: #7289DA}
 }
 
-button[id^="B"]:not(.disabled):hover {
+button[id^="R"]:not(.disabled):hover {
     background-color: #23272A;
 }
 
 /* Disabled cells */
-button[id^="B"].disabled {
+button[id^="R"].disabled {
     font-weight: bold;
     color: #6665d2;
 }
