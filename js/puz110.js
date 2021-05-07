@@ -37,6 +37,7 @@ function loadGrid(grid) {
 
     /* Create a table of the appropriate size */
     createTable();
+    hideSolveStatus();
 
     for (let j = 0; j < size; j++) {
         for (let i = 0; i < size; i++) {
@@ -86,6 +87,10 @@ function displaySolveStatus() {
     solvestatus.textContent = status;
     solvestatus.classList.add("incorrect");
     solvestatus.classList.remove("correct");
+}
+
+function hideSolveStatus() {
+    document.getElementById("solvestatus").textContent = "\xa0";
 }
 
 /* Solving functions */
@@ -345,7 +350,7 @@ function attachClickScript() {
         window.current[Number(decon[0])][Number(decon[1])] = null;
 
         // Hide solve status
-        document.getElementById("solvestatus").textContent = "\xa0";
+        hideSolveStatus();
     }
 
     /* Attach to buttons */

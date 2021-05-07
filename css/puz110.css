@@ -24,10 +24,14 @@ div#info *:not(h2) {
 
 p#solvestatus.correct {
     color: #29b765;
+    animation-name: statuscorrect;
+    animation-duration: 1s;
 }
 
 p#solvestatus.incorrect {
     color: #FF335C;
+    animation-name: statusincorrect;
+    animation-duration: 1s;
 }
 
 /* Options table, buttons, and dropdown selector menu */
@@ -74,11 +78,6 @@ button.updatedCell {
     animation-duration: 1s;
 }
 
-@keyframes blurplefade {
-    from {color: #29b765}
-    to {color: #7289DA}
-}
-
 button[id^="R"]:not(.disabled):hover {
     background-color: #23272A;
 }
@@ -87,4 +86,20 @@ button[id^="R"]:not(.disabled):hover {
 button[id^="R"].disabled {
     font-weight: bold;
     color: #6665d2;
+}
+
+/* Keyframes animations */
+@keyframes blurplefade {
+    from {color: #29b765}
+    to {color: #7289DA}
+}
+
+@keyframes statuscorrect {
+    from {color: #23272A}
+    to {color: #29b765}
+}
+
+@keyframes statusincorrect {
+    from {color: #23272A}
+    to {color: #FF335C}
 }
