@@ -325,3 +325,89 @@ function attachClickScript() {
         b.type = "button";
     }
 }
+
+function isGridFull(){
+    for (let j = 0; j < size; j++) {
+        if (current[j].includes(null)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function isGridCorrect() {
+    if (!isGridFull()) {
+        return null;
+    }
+
+    var rowunique = new Set();
+    var colunique = new Set();
+    var trioregex = /[01]*([01])\1\1[01]*/;
+
+    // Ensure there's no more than len/2 characters of each type
+    for (let j = 0; j < size; j++) {
+        let col = [];
+        for (let i = 0; i < size; i++) {
+            col.push(current[i][j]);
+        }
+
+        let horzero = current[j].filter(x => x == 0).length;
+        let horone = current[j].filter(x => x == 1).length;
+        let verzero = col.filter(x => x == 0).length;
+        let verone = col.filter(x => x == 1).length;
+
+        if (horzero > (size / 2)) {
+            return `Too many zeros in row ${j + 1}`;
+        }
+        if (horone > (size / 2)) {
+            return `Too many ones in row ${j + 1}`;
+        }
+        if (verzero > (size / 2)) {
+            return `Too many zeros in column ${j + 1}`;
+        }
+        if (verone > (size / 2)) {
+            return `Too many ones in column ${j + 1}`;
+        }
+    }
+
+    // Check if any trios of the same digit exist
+    for (let j = 0; j < size; j++) {
+        let col = [];
+        for (let i = 0; i < size; i++) {
+            col.push(current[i][j]);
+        }
+
+        let rowmatch = current[j].join("").match(trioregex);
+        let colmatch = col.join("").match(trioregex);
+
+        if (rowmatch) {
+            var char = rowmatch[0] == "0" ? "zeroes" : "ones";
+            return `Three consecutave ${char} found in row ${j + 1}`;
+        }
+        if (colmatch) {
+            var char = colmatch[0] == "0" ? "zeroes" : "ones";
+            return `Three consecutave ${char} found in column ${j + 1}`;
+        }
+    }
+
+    // Make sure all rows and all columns are unique
+    for (let j = 0; j < size; j++) {
+        let col = [];
+        for (let i = 0; i < size; i++) {
+            col.push(current[i][j]);
+        }
+        
+        colunique.add(col);
+        rowunique.add(current[j]);
+    }
+
+    if (colunique.size != size) {
+        return "Not all columns are unique";
+    }
+    if (rowunique.size != size) {
+        return "Not all rows are unique";
+    }
+
+    // All tests passed
+    return true;
+}
