@@ -22,6 +22,14 @@ div#info *:not(h2) {
     margin-top: 0px;
 }
 
+p#solvestatus.correct {
+    color: #29b765;
+}
+
+p#solvestatus.incorrect {
+    color: #FF335C;
+}
+
 /* Options table, buttons, and dropdown selector menu */
 table#optionstab {
     max-width: 100%;

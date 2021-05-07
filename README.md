@@ -23,9 +23,8 @@ An executable file is automatically created on each push, though it doesn't have
 - [ ] Add opengraph tags for discord embeds
 - [ ] Reset grid to template button
 - [ ] Add a licence
-- [ ] Functions `isGridFull` and `attachCellScript`
-    - If the grid is full, run some js to display a correct/incorrect message
-    - Move cell script attachment to different function to allow for variable grid size
+- [ ] Make it so the code can't physically solve the puzzle incorrectly
+    - This scenario might occur if the user screws up the puzzle and then clicks `Solve fully`
 - [ ] Save and load sessions from cookie savedata includes:
     - `version` (of the program to run the save on)
     - `date` - when the save was created
@@ -36,3 +35,9 @@ An executable file is automatically created on each push, though it doesn't have
 - [x] Allow for variable puzzle size
     - Added in version [v1.09](https://aiden2480.github.io/binary-puzzle/puz109.html)
     - Create table from js
+- [x] Functions `isGridFull` and `attachCellScript`
+    - Added in version [v1.10](https://aiden2480.github.io/binary-puzzle/puz110.html)
+    - If the grid is full, run some js to display a correct/incorrect message
+    - Move cell script attachment to different function to allow for variable grid size
+- [x] Function that checks if the puzzle is correct when all cells are filled in
+    - Added in version [v1.10](https://aiden2480.github.io/binary-puzzle/puz110.html)

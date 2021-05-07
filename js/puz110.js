@@ -65,6 +65,29 @@ function onPageLoad() {
     attachClickScript();
 }
 
+function displaySolveStatus() {
+    // This is only called when the grid is full, but we'll add a check anyway
+    if (!isGridFull()) {
+        return;
+    }
+
+    var status = isGridCorrect();
+    var solvestatus = document.getElementById("solvestatus");
+
+    if (status == true) {
+        console.log("yay");
+        solvestatus.textContent = "Correct! Well done!";
+        solvestatus.classList.add("correct");
+        solvestatus.classList.remove("incorrect");
+        return;
+    }
+
+    // If we get to this point, `status` will be an error message
+    solvestatus.textContent = status;
+    solvestatus.classList.add("incorrect");
+    solvestatus.classList.remove("correct");
+}
+
 /* Solving functions */
 function solvePairs() {
     if (window.current == undefined) {
@@ -306,6 +329,11 @@ function attachClickScript() {
         
         button.innerText = conversion[button.innerText] || "0";
         window.current[Number(decon[0])][Number(decon[1])] = Number(button.innerText);
+
+        // Show solve status
+        if (isGridFull()) {
+            displaySolveStatus();
+        }
     }
 
     function contextMenu(button, e) {
@@ -315,6 +343,9 @@ function attachClickScript() {
         button.innerText = "";
         button.classList.remove("updatedCell");
         window.current[Number(decon[0])][Number(decon[1])] = null;
+
+        // Hide solve status
+        document.getElementById("solvestatus").textContent = "\xa0";
     }
 
     /* Attach to buttons */
