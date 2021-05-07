@@ -74,9 +74,9 @@ function displaySolveStatus() {
 
     var status = isGridCorrect();
     var solvestatus = document.getElementById("solvestatus");
+    solvestatus.classList.remove("fadetogrey");
 
     if (status == true) {
-        console.log("yay");
         solvestatus.textContent = "Correct! Well done!";
         solvestatus.classList.add("correct");
         solvestatus.classList.remove("incorrect");
@@ -90,7 +90,15 @@ function displaySolveStatus() {
 }
 
 function hideSolveStatus() {
-    document.getElementById("solvestatus").textContent = "\xa0";
+    var solvestatus = document.getElementById("solvestatus");
+    var value = solvestatus.textContent;
+    solvestatus.classList.add("fadetogrey");
+
+    setTimeout(() => {
+        if (solvestatus.textContent == value) {
+            solvestatus.textContent = "\xa0";
+        }
+    }, 1000);
 }
 
 /* Solving functions */
@@ -330,7 +338,7 @@ function attachClickScript() {
     
     /* On left/right click functions */
     function changeValue(button) {
-        var decon = button.id.replace("R", "").split("C")
+        var decon = button.id.replace("R", "").split("C");
         
         button.innerText = conversion[button.innerText] || "0";
         window.current[Number(decon[0])][Number(decon[1])] = Number(button.innerText);

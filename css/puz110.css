@@ -22,16 +22,29 @@ div#info *:not(h2) {
     margin-top: 0px;
 }
 
-p#solvestatus.correct {
+/* Solvestatus colour and animations */
+p#solvestatus.correct:not(.fadetogrey) {
     color: #29b765;
     animation-name: statuscorrect;
     animation-duration: 1s;
 }
 
-p#solvestatus.incorrect {
+p#solvestatus.incorrect:not(.fadetogrey) {
     color: #FF335C;
     animation-name: statusincorrect;
     animation-duration: 1s;
+}
+
+p#solvestatus.correct.fadetogrey {
+    color: #23272A;
+    animation-name: statuscorrecttogrey;
+    animation-duration: .5s;
+}
+
+p#solvestatus.incorrect.fadetogrey {
+    color: #23272A;
+    animation-name: statusincorrecttogrey;
+    animation-duration: .5s;
 }
 
 /* Options table, buttons, and dropdown selector menu */
@@ -102,4 +115,14 @@ button[id^="R"].disabled {
 @keyframes statusincorrect {
     from {color: #23272A}
     to {color: #FF335C}
+}
+
+@keyframes statuscorrecttogrey {
+    from {color: #29b765}
+    to {color: #23272A}
+}
+
+@keyframes statusincorrecttogrey {
+    from {color: #FF335C}
+    to {color: #23272A}
 }

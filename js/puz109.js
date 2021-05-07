@@ -309,7 +309,7 @@ function attachClickScript() {
     }
 
     function contextMenu(button, e) {
-        var decon = button.id.replace("R", "").split("C")
+        var decon = button.id.replace("R", "").split("C");
         
         e.preventDefault();
         button.innerText = "";
