@@ -18,9 +18,7 @@ Dependencies may be installed through `pip install -r requirements.txt`. `Colora
 An executable file is automatically created on each push, though it doesn't have colorama support enabled.
 
 ## :memo: Future features
-- [ ] Function that checks if the puzzle is correct when all cells are filled in
 - [ ] If the grid is still incomplete after passing the three tests, randomly guess cells until correct
-- [ ] Add opengraph tags for discord embeds
 - [ ] Reset grid to template button
 - [ ] Add a licence
 - [ ] Make it so the code can't physically solve the puzzle incorrectly
@@ -40,4 +38,6 @@ An executable file is automatically created on each push, though it doesn't have
     - If the grid is full, run some js to display a correct/incorrect message
     - Move cell script attachment to different function to allow for variable grid size
 - [x] Function that checks if the puzzle is correct when all cells are filled in
+    - Added in version [v1.10](https://aiden2480.github.io/binary-puzzle/puz110.html)
+- [x] Add opengraph tags for discord embeds
     - Added in version [v1.10](https://aiden2480.github.io/binary-puzzle/puz110.html)
