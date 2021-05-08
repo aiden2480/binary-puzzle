@@ -14,6 +14,10 @@ code {
     border-radius: 3px;
 }
 
+a {
+    color: #6665d2;
+}
+
 div#info * {
     margin-bottom: 7px;
 }

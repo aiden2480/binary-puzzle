@@ -280,10 +280,11 @@ function createTable() {
 
     table.innerHTML = "";
     for (let j = 0; j < size; j++) {
-        tr = document.createElement("tr");
+        let tr = document.createElement("tr");
         for (let i = 0; i < size; i++) {
-            td = document.createElement("td");
-            button = document.createElement("button");
+            let td = document.createElement("td");
+            let button = document.createElement("button");
+            
             button.id = `R${j}C${i}`;
             td.appendChild(button);
             tr.appendChild(td);
