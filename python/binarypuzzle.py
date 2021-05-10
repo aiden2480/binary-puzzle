@@ -1,9 +1,13 @@
+import sys
 import random
 
 try:
     from colorama import Fore as colour
     from colorama import init as colorama_init
     colorama_init()
+
+    if "--no-colour" in sys.argv:
+        raise ModuleNotFoundError
 except ModuleNotFoundError:
     class Empty(object):
         def __getattr__(self, attr):

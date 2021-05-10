@@ -283,6 +283,7 @@ function updateWebpage(parentFunc) {
 function convert1Dto2D(grid) {
     /* Converts a one-dimensional grid to a two-dimensional one */
     var processed = [];
+    var size = Math.sqrt(grid.length);
     var copy = JSON.parse(JSON.stringify(grid));
 
     for (let j = 0; j < size; j++) {

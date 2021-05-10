@@ -20,6 +20,8 @@ The Python version is located under [`python/`](./python) and should be accessed
 Dependencies may be installed through `pip install -r requirements.txt`. `Colorama` module is optional.
 An executable file is automatically created on each push, though it doesn't have colorama support enabled.
 
+If the program displays a bunch of replacement characters (�) instead of displaying a title, use the `--no-title` flag. If you want to disable terminal colours (:confused:) pass the `--no-colour` flag
+
 ## :memo: Future features
 - [ ] If the grid is still incomplete after passing the three tests, randomly guess cells until correct
 - [ ] Reset grid to template button

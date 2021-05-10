@@ -1,10 +1,15 @@
 from binarypuzzle import BinaryPuzzle, colour
 from timeit import timeit
+import time
+import sys
 
+title = f"""
+{colour.GREEN}█▀▀▄ ░▀░ █▀▀▄ █▀▀█ █▀▀█ █░░█   {colour.BLUE}█▀▀█ █░░█ ▀▀█ ▀▀█ █░░ █▀▀
+{colour.GREEN}█▀▀▄ ▀█▀ █░░█ █▄▄█ █▄▄▀ █▄▄█   {colour.BLUE}█░░█ █░░█ ▄▀░ ▄▀░ █░░ █▀▀
+{colour.GREEN}▀▀▀░ ▀▀▀ ▀░░▀ ▀░░▀ ▀░▀▀ ▄▄▄█   {colour.BLUE}█▀▀▀ ░▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀
+{colour.RESET}"""
 
-def main(index=0):
-    binary = BinaryPuzzle.example(index)
-
+def solve(binary):
     # Print initial puzzle
     print(colour.GREEN + f"INITIAL GRID{colour.RESET}")
     binary.print()
@@ -16,35 +21,40 @@ def main(index=0):
             old = [x[:] for x in binary.grid]
             new = func()
 
-            if new != old:  # Test failed (new digits solved)
+            if new != old: # Test failed (new digits solved)
                 name = func.__name__.upper()
                 print(f"{colour.CYAN}GRID AFTER {name}{colour.RESET}")
                 binary.print()
                 tests_passed = 0
-            else:  # Test passed (potentially finished the puzzle)
+            else: # Test passed (potentially finished the puzzle)
                 tests_passed += 1
 
     # Confirm if puzzle solved logically
     if binary.solved:
         print(f"{colour.GREEN}PUZZLE SOLVED{colour.RESET}")
-        return
+    else:
+        print(f"{colour.GREEN}This puzzle can't be solved following the three rules. Good luck!{colour.RESET}")
+
+
+def main(binpuz: bool):
+    print(title if binpuz else "BinaryPuzzle\nAiden Gardner\n")
     
-    # Puzzle incomplete, Start guessing random numbers (TODO)
-
-
-def time(func, iterations=1000):
-    """
-        Current statistics (1000 tests)
-         - With print statement:        93729.3206 μs/n
-         - Without print statements:     1064.4711 μs/n
-        88x faster without the print statements. 
-    """
+    print(f"Enter {colour.CYAN}6{colour.RESET} and then a digit between 1 and 13 for the corresponding 6x6 puzzle. ", end="")
+    print(f"{colour.GREEN}e.g.{colour.RESET} {colour.CYAN}61{colour.RESET} or {colour.CYAN}612{colour.RESET}")
     
-    elapsed = timeit(func, number=iterations)
-    microseconds = round((elapsed/iterations)*1000000, 4)
+    print(f"Enter {colour.CYAN}8{colour.RESET} for an 8x8 puzzle")
+    print(f"Enter {colour.CYAN}14{colour.RESET} for a 14x14 puzzle")
+    print(f"You may also enter {colour.CYAN}\"custom\"{colour.RESET} to enter custom puzzle data (any size)")
+    code = input(f"\n{colour.BLUE}> {colour.CYAN}").strip().lower()
 
-    print(f"{iterations=} {elapsed=} {microseconds} μs per iteration")
-
+    if code in ["c", "custom"]:
+        print("you picked a custom code")
+    elif not code.isdigit():
+        print(f"{colour.RED}You must enter an integer!{colour.RESET}")
+        time.sleep(3)
+        print()
+        return main(binpuz)
 
 if __name__ == "__main__":
-    main()
+    binpuz = "--no-title" not in sys.argv
+    main(binpuz)
