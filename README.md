@@ -12,6 +12,9 @@
 Aiden Gardner 11SDD6 Year 11 Term 2 BinaryPuzzle assessment 2021.
 Solves 6x6 binary puzzles using three rules. Available in HTML and Python.
 
+## :scroll: Licence
+This project is licensed under the [MIT licence](https://choosealicense.com/licenses/mit/#). For more info, see the group project [Wiki page](https://github.com/aiden2480/A2-UniTech-BinaryPuzzle/wiki#justification-of-licence).
+
 ## :snake: Python
 The Python version is located under [`python/`](./python) and should be accessed via `cd python` before running `main.py` (due to relative imports).
 Dependencies may be installed through `pip install -r requirements.txt`. `Colorama` module is optional.
@@ -20,7 +23,6 @@ An executable file is automatically created on each push, though it doesn't have
 ## :memo: Future features
 - [ ] If the grid is still incomplete after passing the three tests, randomly guess cells until correct
 - [ ] Reset grid to template button
-- [ ] Add a licence
 - [ ] Make it so the code can't physically solve the puzzle incorrectly
     - This scenario might occur if the user screws up the puzzle and then clicks `Solve fully`
 - [ ] Save and load sessions from cookie savedata includes:
@@ -28,6 +30,7 @@ An executable file is automatically created on each push, though it doesn't have
     - `date` - when the save was created
     - `cell data` - current state of the cells
     - `cell template` - use to grey out template cells
+- Add functionality for the code to generate puzzles for the user to complete
 - [x] Cells that are updated by code temporarily flash green to draw attention before fading to blurple
     - Added in version [v1.06](https://aiden2480.github.io/binary-puzzle/puz106.html)
 - [x] Allow for variable puzzle size
@@ -41,3 +44,5 @@ An executable file is automatically created on each push, though it doesn't have
     - Added in version [v1.10](https://aiden2480.github.io/binary-puzzle/puz110.html)
 - [x] Add opengraph tags for discord embeds
     - Added in version [v1.10](https://aiden2480.github.io/binary-puzzle/puz110.html)
+- [x] Add a licence
+    - Added in version [v1.11](./LICENCE)
