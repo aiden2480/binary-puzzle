@@ -44,22 +44,25 @@ class BinaryPuzzle(object):
     def example(cls, pos=0):
         """
             Generate a random puzzle.
-            Index 0 will be randomly generated from the other list entries
+            Index 0 will be randomly generated from the other list entries.
+            These puzzles are the same as the JavaScript ones
         """
 
         puzzles = [
-            "xxxxxx\nx1xxx1\nx1x1xx\nxx0xx1\nx1xxxx\nxxx00x",  # Puzzle "1"
-            "x1xxxx\nxxx0x0\nx0x0xx\n1xxx1x\nxxxx0x\n0xxxxx",  # Puzzle "2"
-            "0xx1xx\nx0xxx1\nxx11xx\nxxxx11\nxxxxx0\n0x1x1x",  # Puzzle "3"
-            "xxxxxx\nx1x1x1\nxx00xx\n0xxxxx\nxxxx11\nxx0x0x",  # Puzzle "4"
-            "xxxxx0\nx1xx1x\nxxx0xx\nxx1xxx\nxx1xxx\nx0xx1x",  # Puzzle "5" - open
-            "1x1xx1\nxxx1xx\n0xx10x\nxx1xxx\nx1xxxx\n1xx11x",  # Puzzle "6" - open
-            "11xxxx\n1xx1xx\nxxxx0x\n0x0xxx\nxxxxxx\nxx0x0x",  # Puzzle "7"
-            "xx00x0\nxxxxxx\nx11xxx\nxxxx00\nxx1x0x\nxxxxxx",  # Puzzle "8"
-            "xxxxxx\nx1xxxx\nxx0x11\nxx0xxx\nx0xx1x\nxxxxxx",  # Puzzle "9"
-            "x1x1x1\nxxxxxx\n00xxxx\nxxxx1x\n0x10xx\nx1xxxx",  # Puzzle "10"
-            "0xxxxx\nx11xxx\nxx1xxx\nxxx0xx\n0xx1xx\nxxxxxx",  # Puzzle "11"
-            "xxx1xx\nxxxxx0\nxxxx00\nxxxx1x\n1xxxxx\nx0x0x0",  # Puzzle "12"
+            "1x0x00\nx1x00x\nxxxxx0\n0xx1xx\n10x11x\nx0xx11",  # Puzzle 1
+            "xxxxxx\nx1xxx1\nx1x1xx\nxx0xx1\nx1xxxx\nxxx00x",  # Puzzle 2
+            "x1xxxx\nxxx0x0\nx0x0xx\n1xxx1x\nxxxx0x\n0xxxxx",  # Puzzle 3
+            "0xx1xx\nx0xxx1\nxx11xx\nxxxx11\nxxxxx0\n0x1x1x",  # Puzzle 4
+            "xxxxxx\nx1x1x1\nxx00xx\n0xxxxx\nxxxx11\nxx0x0x",  # Puzzle 5
+            "xxxxx0\nx1xx1x\nxxx0xx\nxx1xxx\nxx1xxx\nx0xx1x",  # Puzzle 6 - Unsolvable
+            "1x1xx1\nxxx1xx\n0xx10x\nxx1xxx\nx1xxxx\n1xx11x",  # Puzzle 7 - Unsolvable
+            "11xxxx\n1xx1xx\nxxxx0x\n0x0xxx\nxxxxxx\nxx0x0x",  # Puzzle 8
+            "xx00x0\nxxxxxx\nx11xxx\nxxxx00\nxx1x0x\nxxxxxx",  # Puzzle 9
+            "xxxxxx\nx1xxxx\nxx0x11\nxx0xxx\nx0xx1x\nxxxxxx",  # Puzzle 10
+            "x1x1x1\nxxxxxx\n00xxxx\nxxxx1x\n0x10xx\nx1xxxx",  # Puzzle 11
+            "0xxxxx\nx11xxx\nxx1xxx\nxxx0xx\n0xx1xx\nxxxxxx",  # Puzzle 12
+            "xxx1xx\nxxxxx0\nxxxx00\nxxxx1x\n1xxxxx\nx0x0x0",  # Puzzle 13
+            
             "xxxxxxx0\nx00xx1xx\nx0xxx1x0\nxx1xxxxx\n00x1xx1x\nxxxx1xxx\n11xxx0x1\nx1xxxxx1",  # 8x8 puzzle
             "x00xx11x1x00x0\nxxxxxxxxxxx0xx\nx00xxxx11xxx1x\nx0x11x0xxx0xxx\nxxxx1xxxxxxxxx\n01xxxxxx0x11x1\nxxx0xx1xx0xxxx\n" \
                 "x0xxxxxxxxxxx0\nxxxx1x00x1xx00\nx11xxx00xxxx0x\n0xxxxxxxxxx1xx\nx0xxxxxxxx1xxx\n1xxxxx11x0x0x0\nx1xx0xx1xxx0x1"  # 14x14 puzzle
