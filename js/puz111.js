@@ -108,35 +108,26 @@ function solvePairs() {
         return;
     }
 
-    for (let j = 0; j < size; j++) {        /* "j" is row pos */
-        for (let i = 0; i < size; i++) {    /* "i" is col pos */
-            if (i > 0 && i < (size - 1)) {  /* The selected cell isn't at either end of the row */
-                let concatenation = `${current[j][i - 1]}${current[j][i]}${current[j][i + 1]}`;
+    for (let j = 0; j < size; j++) {      /* "j" is row pos */
+        for (let i = 0; i < size; i++) {  /* "i" is col pos */
 
-                /* Solve 00x/x00/11x/x11 horizontally */
-                if (concatenation.match(/null00/)) {        // x00
-                    current[j][i - 1] = 1;
-                } else if (concatenation.match(/00null/)) { // 00x
-                    current[j][i + 1] = 1;
-                } else if (concatenation.match(/null11/)) { // x11
-                    current[j][i - 1] = 0;
-                } else if (concatenation.match(/11null/)) { // 11x
-                    current[j][i + 1] = 0;
+            /* Solve horizontally */
+            if (current[j][i] != null && current[j][i] == current[j][i + 1]) {
+                if (i > 0) {
+                    current[j][i - 1] = 1 - current[j][i];
+                }
+                if (i < (size - 2)) {
+                    current[j][i + 2] = 1 - current[j][i];
                 }
             }
 
-            if (j > 0 && j < (size - 1)) {  /* The selected cell isn't at either end of the column */
-                let concatenation = `${current[j - 1][i]}${current[j][i]}${current[j + 1][i]}`;
-
-                /* Solve 00x/x00/11x/x11 vertically */
-                if (concatenation.match(/null00/)) {        // x00
-                    current[j - 1][i] = 1;
-                } else if (concatenation.match(/00null/)) { // 00x
-                    current[j + 1][i] = 1;
-                } else if (concatenation.match(/null11/)) { // x11
-                    current[j - 1][i] = 0;
-                } else if (concatenation.match(/11null/)) { // 11x
-                    current[j + 1][i] = 0;
+            /* Solve vertically */
+            if (j < (size - 1) && current[j][i] != null && current[j][i] == current[j + 1][i]) {
+                if (j > 0) {
+                    current[j - 1][i] = 1 - current[j][i];
+                }
+                if (j < (size - 2)) {
+                    current[j + 2][i] = 1 - current[j][i];
                 }
             }
         }
