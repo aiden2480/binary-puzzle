@@ -32,7 +32,9 @@ If the program displays a bunch of replacement characters (�) instead of displ
     - `date` - when the save was created
     - `cell data` - current state of the cells
     - `cell template` - use to grey out template cells
-- Add functionality for the code to generate puzzles for the user to complete
+- [ ] Add functionality for the code to generate puzzles for the user to complete
+- [ ] Add logo to python executable
+- [ ] Code `solve once`, `reset to template` 
 - [x] Cells that are updated by code temporarily flash green to draw attention before fading to blurple
     - Added in version [v1.06](https://aiden2480.github.io/binary-puzzle/puz106.html)
 - [x] Allow for variable puzzle size
