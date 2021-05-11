@@ -67,12 +67,26 @@ function onPageLoad() {
     attachClickScript();
 }
 
-function displaySolveStatus() {
-    // This is only called when the grid is full, but we'll add a check anyway
-    if (!isGridFull()) {
-        return;
-    }
+/* Solve status */
+function processSolveStatus() {
+    // 11/5/21 LMB/RMB scripts call this function to check if message is necessary
+    var full = isGridFull();
+    var call = isGridCorrect();
+    var correct = call == true; // Returns an error message if incorrect
 
+    // Display message if grid full or if there is an error
+    if (full || !correct) {
+        displaySolveStatus();
+    }
+    
+    // Hide if the grid is correct and still being edited
+    if (correct && !full) {
+        hideSolveStatus();
+    }
+}
+
+function displaySolveStatus() {
+    // 11/5/21 Only ever called by processSolveStatus()
     var status = isGridCorrect();
     var solvestatus = document.getElementById("solvestatus");
     solvestatus.classList.remove("fadetogrey");
@@ -91,15 +105,9 @@ function displaySolveStatus() {
 }
 
 function hideSolveStatus() {
+    // 5/11/21 Just don't reset the text. Causes too many errors
     var solvestatus = document.getElementById("solvestatus");
-    var value = solvestatus.textContent;
     solvestatus.classList.add("fadetogrey");
-
-    setTimeout(() => {
-        if (solvestatus.textContent == value) {
-            solvestatus.textContent = "\xa0";
-        }
-    }, 1000);
 }
 
 /* Solving functions */
@@ -268,12 +276,6 @@ function solveOnce() {
     console.log(`Ran solveOnce(). ${updated} total cell${updated != 1 ? "s" : ""} updated`);
 }
 
-function templateReset() {
-    // 11/5/21 Add templateReset
-    var selector = document.getElementById("changePuz");
-    loadGrid(eval(selector.value));
-}
-
 /* Helper functions */
 function updateWebpage(parentFunc) {
     /* This is called at the end of each solving function */
@@ -315,6 +317,12 @@ function convert1Dto2D(grid) {
     return processed;
 }
 
+function templateReset() {
+    // 11/5/21 Add templateReset
+    var selector = document.getElementById("changePuz");
+    loadGrid(eval(selector.value));
+}
+
 function createTable() {
     /* Create an appropriately sized table for the grid */
     var table = document.getElementById("gameboard");
@@ -354,10 +362,8 @@ function attachClickScript() {
         button.innerText = conversion[button.innerText] || "0";
         window.current[Number(decon[0])][Number(decon[1])] = Number(button.innerText);
 
-        // Show solve status
-        if (isGridFull()) {
-            displaySolveStatus();
-        }
+        // Update solve status
+        processSolveStatus();
     }
 
     function contextMenu(button, e) {
@@ -368,8 +374,8 @@ function attachClickScript() {
         button.classList.remove("updatedCell");
         window.current[Number(decon[0])][Number(decon[1])] = null;
 
-        // Hide solve status
-        hideSolveStatus();
+        // Update solve status
+        processSolveStatus();
     }
 
     /* Attach to buttons */
@@ -381,6 +387,7 @@ function attachClickScript() {
     }
 }
 
+/* State-of-grid helpers */
 function isGridFull(){
     for (let j = 0; j < size; j++) {
         if (current[j].includes(null)) {
@@ -391,10 +398,7 @@ function isGridFull(){
 }
 
 function isGridCorrect() {
-    if (!isGridFull()) {
-        return null;
-    }
-
+    // 11/5/21 Still test for correctness, even if grid not full
     var rowunique = new Set();
     var colunique = new Set();
     var trioregex = /[01]*([01])\1\1[01]*/;
@@ -427,14 +431,23 @@ function isGridCorrect() {
 
     // Check if any trios of the same digit exist
     for (let j = 0; j < size; j++) {
-        let col = [];
+        let newcol = [];
         for (let i = 0; i < size; i++) {
-            col.push(current[i][j]);
+            newcol.push(current[i][j] != null ? current[i][j] : "x");
+        }
+
+        // Replace null with x in concatenation
+        let newrow = JSON.parse(JSON.stringify(current[j]));
+        if (newrow.indexOf(null) != -1) {
+            do {
+                let index = newrow.indexOf(null);
+                newrow[index] = "x";
+            } while (newrow.indexOf(null) != -1);
         }
 
         // 11/5/21 Fix spelling in error message
-        let rowmatch = current[j].join("").match(trioregex);
-        let colmatch = col.join("").match(trioregex);
+        let rowmatch = newrow.join("").match(trioregex);
+        let colmatch = newcol.join("").match(trioregex);
 
         if (rowmatch) {
             var char = rowmatch[0] == "0" ? "zeroes" : "ones";
@@ -444,6 +457,11 @@ function isGridCorrect() {
             var char = colmatch[0] == "0" ? "zeroes" : "ones";
             return `Three consecutive ${char} found in column ${j + 1}`;
         }
+    }
+
+    // The last test doesn't need to be run if the grid isn't completely full
+    if (!isGridFull()) {
+        return true;
     }
 
     // Make sure all rows and all columns are unique
