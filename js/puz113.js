@@ -409,7 +409,7 @@ function isGridCorrect() {
     // 11/5/21 Still test for correctness, even if grid not full
     var rowunique = new Set();
     var colunique = new Set();
-    var trioregex = /[01]*([01])\1\1[01]*/;
+    var trioregex = /([01])\1\1/;
 
     // Ensure there's no more than len/2 characters of each type
     for (let j = 0; j < size; j++) {
@@ -453,16 +453,16 @@ function isGridCorrect() {
             } while (newrow.indexOf(null) != -1);
         }
 
-        // 11/5/21 Fix spelling in error message
+        // 11/5/21 Match group one - not match one! https://regex101.com/r/1Il0ZM/1
         let rowmatch = newrow.join("").match(trioregex);
         let colmatch = newcol.join("").match(trioregex);
 
         if (rowmatch) {
-            var char = rowmatch[0] == "0" ? "zeroes" : "ones";
+            var char = rowmatch[1] == "0" ? "zeroes" : "ones";
             return `Three consecutive ${char} found in row ${j + 1}`;
         }
         if (colmatch) {
-            var char = colmatch[0] == "0" ? "zeroes" : "ones";
+            var char = colmatch[1] == "0" ? "zeroes" : "ones";
             return `Three consecutive ${char} found in column ${j + 1}`;
         }
     }
