@@ -17,6 +17,7 @@ var G141 = [null, 0, 0, null, null, 1, 1, null, 1, null, 0, 0, null, 0, null, nu
 var GEMP = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
 var current;    // Will be a two-dimensional array. Synced with the HTML board
 var size;       // Much better to have this as a global variable than calculate it every time
+var lastedit;   // Datestamp of when the last cell was edited. Used to determine if `processSolveStatus` should be caleld
 
 function loadGrid(grid) {
     /* 21/4/21 - Fills in the grid from a one-dimensional template (converts to 2D) */
@@ -357,13 +358,20 @@ function attachClickScript() {
     
     /* On left/right click functions */
     function changeValue(button) {
+        var now = new Date();
         var decon = button.id.replace("R", "").split("C");
+        var before = current[Number(decon[0])][Number(decon[1])];
         
+        window.lastedit = now;
         button.innerText = conversion[button.innerText] || "0";
         window.current[Number(decon[0])][Number(decon[1])] = Number(button.innerText);
 
-        // Update solve status
-        processSolveStatus();
+        // Update solve status - delay only if cell was previously blank
+        setTimeout(() => {
+            if (lastedit == now) {
+                processSolveStatus();
+            }
+        }, (before == null) ? 1000 : 0);
     }
 
     function contextMenu(button, e) {
