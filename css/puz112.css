@@ -52,11 +52,21 @@ p#solvestatus.incorrect.fadetogrey {
 }
 
 /* Options table, buttons, and dropdown selector menu */
-table#optionstab {
-    max-width: 100%;
+div#boardparent {
     white-space: nowrap;
     border-collapse: collapse;
     padding: 0px;
+    display: inline-block;
+}
+
+div.buttonsrow {
+    display: flex;
+    justify-content: center;
+    margin-top: 3px;
+}
+
+div.buttonsrow * {
+    margin-right: 3px;
 }
 
 button:not([id^="R"]), select#changePuz {
@@ -72,8 +82,8 @@ table#gameboard {
 }
 
 #gameboard, #gameboard td, #gameboard th, button[id^="R"] {
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
     font-size: 30px;
     vertical-align: middle;
     text-align: center;

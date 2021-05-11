@@ -5,3 +5,6 @@ __pycache__/
 
 # Repl.it environment files
 .replit
+
+# Visual Studio
+.vs/

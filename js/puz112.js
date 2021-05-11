@@ -60,7 +60,8 @@ function loadGrid(grid) {
 
 function onPageLoad() {
     /* Load grid in selector */
-    loadGrid(eval(document.getElementById("changePuz").value));
+    var selector = document.getElementById("changePuz");
+    loadGrid(eval(selector.value));
 
     /* Attach click script to cells */
     attachClickScript();
@@ -256,6 +257,23 @@ function solveFully() {
     console.log(`Ran solveFully(). ${total} total cell${total != 1 ? "s" : ""} updated`);
 }
 
+function solveOnce() {
+    // 11/5/21 Add solveOnce
+    var updated = 0;
+
+    solvePairs();
+    solveTrios();
+    solveQuota();
+
+    console.log(`Ran solveOnce(). ${updated} total cell${updated != 1 ? "s" : ""} updated`);
+}
+
+function templateReset() {
+    // 11/5/21 Add templateReset
+    var selector = document.getElementById("changePuz");
+    loadGrid(eval(selector.value));
+}
+
 /* Helper functions */
 function updateWebpage(parentFunc) {
     /* This is called at the end of each solving function */
@@ -414,16 +432,17 @@ function isGridCorrect() {
             col.push(current[i][j]);
         }
 
+        // 11/5/21 Fix spelling in error message
         let rowmatch = current[j].join("").match(trioregex);
         let colmatch = col.join("").match(trioregex);
 
         if (rowmatch) {
             var char = rowmatch[0] == "0" ? "zeroes" : "ones";
-            return `Three consecutave ${char} found in row ${j + 1}`;
+            return `Three consecutive ${char} found in row ${j + 1}`;
         }
         if (colmatch) {
             var char = colmatch[0] == "0" ? "zeroes" : "ones";
-            return `Three consecutave ${char} found in column ${j + 1}`;
+            return `Three consecutive ${char} found in column ${j + 1}`;
         }
     }
 
