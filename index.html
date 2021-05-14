@@ -32,12 +32,13 @@
     </style>
 
     <!-- PWA stuff -->
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/images/binarypuzzle.png">
-    <script src="/js/upup.min.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/binarypuzzle.png">
+    <script src="/upup.min.js"></script>
     <script>
         UpUp.start({
             "content-url": "offline",
+            "scope": "binary-puzzle/",
             "assets": [
                 "/puz101.html", "/puz102.html", "/puz103.html",
                 "/puz104.html", "/puz105.html", "/puz106.html",
