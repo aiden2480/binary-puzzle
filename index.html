@@ -31,6 +31,18 @@
         }
     </style>
 
+    <!-- PWA stuff -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/images/binarypuzzle.png">
+    <script src="/js/upup.min.js"></script>
+    <script>
+        UpUp.start({
+            "content-url": "offline",
+            "assets": [
+            ]
+        });
+    </script>
+
     <!-- Opengraph tags -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aiden Gardner • 11SDD6 • Term 2 2021">
