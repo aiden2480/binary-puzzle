@@ -24,7 +24,6 @@ If the program displays a bunch of replacement characters (�) instead of displ
 
 ## :memo: Future features
 - [ ] If the grid is still incomplete after passing the three tests, randomly guess cells until correct
-- [ ] Reset grid to template button
 - [ ] Make it so the code can't physically solve the puzzle incorrectly
     - This scenario might occur if the user screws up the puzzle and then clicks `Solve fully`
 - [ ] Save and load sessions from cookie savedata includes:
@@ -34,7 +33,7 @@ If the program displays a bunch of replacement characters (�) instead of displ
     - `cell template` - use to grey out template cells
 - [ ] Add functionality for the code to generate puzzles for the user to complete
 - [ ] Add logo to python executable
-- [ ] Code `solve once`, `reset to template` 
+- [ ] Turn application into a PWA
 - [x] Cells that are updated by code temporarily flash green to draw attention before fading to blurple
     - Added in version [v1.06](https://aiden2480.github.io/binary-puzzle/puz106.html)
 - [x] Allow for variable puzzle size
@@ -50,3 +49,7 @@ If the program displays a bunch of replacement characters (�) instead of displ
     - Added in version [v1.10](https://aiden2480.github.io/binary-puzzle/puz110.html)
 - [x] Add a licence
     - Added in version [v1.11](./LICENCE)
+- [x] Reset grid to template button
+    - Added in version [v1.12](https://aiden2480.github.io/binary-puzzle/puz112.html)
+- [x] Display error message if user violates rule while still solving
+    - Added in version [v1.13](https://aiden2480.github.io/binary-puzzle/puz113.html)
