@@ -1,0 +1,17 @@
+{
+    "name": "Binary Puzzle 6x6",
+    "short_name": "Binary",
+    "description": "Aiden Gardner • 11SDD6 • Term 2 2021",
+    "theme_color": "#d85200",
+    "background_color": "#7289da",
+    "display": "standalone",
+    "orientation": "any",
+    "scope": "/",
+    "start_url": "/binary-puzzle/",
+    "icons": [
+        {
+            "src": "/images/binarypuzzle.png",
+            "sizes": "581x581"
+        }
+    ]
+}
