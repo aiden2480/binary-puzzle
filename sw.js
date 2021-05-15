@@ -1,6 +1,6 @@
-const version = "1.14.2";
+const version = "2021.05.15";
 const cacheName = `binarypuzzle-${version}`;
-const currentVersion = 14;
+const currentVersion = 13;
 
 self.addEventListener("install", e => {
     e.waitUntil(
@@ -26,8 +26,11 @@ self.addEventListener("install", e => {
             for (let i = 0; i < currentVersion; i++) {
                 let cver = String(i + 1).padStart(2, "0");
                 clist.push(`puz1${cver}.html`);
-                clist.push(`js/puz1${cver}.js`);
-                clist.push(`css/puz1${cver}.css`);
+
+                if ((i + 1) >= 3) { // This was the version css/js files were added
+                    clist.push(`js/puz1${cver}.js`);
+                    clist.push(`css/puz1${cver}.css`);
+                }
             }
 
             return cache.addAll(clist).then(() => self.skipWaiting());
