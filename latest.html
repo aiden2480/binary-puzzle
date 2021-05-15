@@ -17,11 +17,11 @@
                     /* Calculate latest version */
                     do {
                         version += 1;
-                        _verstring = "puz1" + String(version + 1).padStart(2, "0") + ".html";
+                        _verstring = `puz1${String(version + 1).padStart(2, "0")}.html`;
                     } while (files.indexOf(_verstring) != -1);
 
                     /* Navigate */
-                    window.location = "puz1" + String(version).padStart(2, "0") + ".html";
+                    window.location = `puz1${String(version).padStart(2, "0")}.html`;
                 });
             });
         </script>

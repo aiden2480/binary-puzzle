@@ -33,7 +33,6 @@ If the program displays a bunch of replacement characters (�) instead of displ
     - `cell template` - use to grey out template cells
 - [ ] Add functionality for the code to generate puzzles for the user to complete
 - [ ] Add logo to python executable
-- [ ] Turn application into a PWA
 - [x] Cells that are updated by code temporarily flash green to draw attention before fading to blurple
     - Added in version [v1.06](https://aiden2480.github.io/binary-puzzle/puz106.html)
 - [x] Allow for variable puzzle size
@@ -53,3 +52,7 @@ If the program displays a bunch of replacement characters (�) instead of displ
     - Added in version [v1.12](https://aiden2480.github.io/binary-puzzle/puz112.html)
 - [x] Display error message if user violates rule while still solving
     - Added in version [v1.13](https://aiden2480.github.io/binary-puzzle/puz113.html)
+- [x] Turn application into a PWA
+    - Added after version v1.13
+- [x] Automate `latest.html` redirect link
+    - Added in version [v1.13](https://aiden2480.github.io/binary-puzzle/latest.html)
