@@ -20,6 +20,7 @@ The Python version is located under [`python/`](./python) and should be accessed
 Dependencies may be installed through `pip install -r requirements.txt`. `Colorama` module is optional.
 An executable file is automatically created on each push, though it doesn't have colorama support enabled.
 
+**If the Python `main.py` file by itself isn't working, it's preferable to [Run on Repl.it](https://replit.com/@chocolatejade42/github-python-binarypuzzle) instead, but other options are available.**
 If the program displays a bunch of replacement characters (�) instead of displaying a title, use the `--no-title` flag. If you want to disable terminal colours (:confused:) pass the `--no-colour` flag
 
 ## :memo: Future features
