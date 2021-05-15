@@ -1,3 +1,8 @@
+"""
+    This is nasty to read with the amount of print statments
+    so I'd suggest you just don't try to :)
+"""
+
 from binarypuzzle import BinaryPuzzle, colour
 from timeit import timeit
 import time
@@ -41,13 +46,33 @@ def main(binpuz: bool):
     
     print(f"Enter {colour.CYAN}8{colour.RESET} for an 8x8 puzzle")
     print(f"Enter {colour.CYAN}14{colour.RESET} for a 14x14 puzzle")
-    #   print(f"You may also enter {colour.CYAN}\"custom\"{colour.RESET} to enter custom puzzle data (any size)")
+    print(f"You may also enter {colour.CYAN}\"custom\"{colour.RESET} to enter custom puzzle data (any size)")
 
-    code = input(f"\n{colour.BLUE}> {colour.CYAN}").strip().lower()
+    code = input(f"{colour.BLUE}> {colour.CYAN}").strip().lower()
     print(colour.RESET, end="")
 
     if code in ["c", "custom"]:
-        print("you picked a custom code")
+        puzid = NotImplemented
+        print(f"\n{colour.BLUE}FORMAT FOR CUSTOM PUZZLES{colour.RESET}")
+        print(f"{colour.BLUE}>{colour.RESET} Use the digit {colour.CYAN}0{colour.RESET} or {colour.CYAN}1{colour.RESET} to represent their respective values")
+        print(f"{colour.BLUE}>{colour.RESET} Use a {colour.CYAN}x{colour.RESET} to represent a blank cell")
+        print(f"{colour.BLUE}>{colour.RESET} The character {colour.CYAN}\\n{colour.RESET} should be used to seperate each row")
+        print(f"{colour.BLUE}>{colour.RESET} The puzzle may be any size, but should be valid (all rows and cols the same length)")
+
+        sixbysix = "1x0x00\nx1x00x\nxxxxx0\n0xx1xx\n10x11x\nx0xx11"
+        conversion = {"0": colour.CYAN, "1": colour.CYAN, "x": colour.GREEN}
+        for key, value in conversion.items():
+            sixbysix = sixbysix.replace(key, f"{value}{key}{colour.RESET}")
+        sixbysix = sixbysix.replace("\n", f"{colour.BLUE}\\n{colour.RESET}")
+
+        print(f"\n{colour.BLUE}An example of a 6x6 grid string{colour.RESET}")
+        print(f"{colour.BLUE}>{colour.RESET} {sixbysix}")
+
+        print(f"\n{colour.BLUE}Enter your puzzle string{colour.RESET}")
+        string = input(f"{colour.BLUE}> {colour.CYAN}").strip().lower().replace("\\n", "\n")
+        print(colour.RESET, end="")
+
+        binary = BinaryPuzzle(string)
     elif not code.isdigit():
         print(f"{colour.RED}You must enter an integer!{colour.RESET}")
         time.sleep(3)
