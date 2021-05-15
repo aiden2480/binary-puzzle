@@ -73,7 +73,7 @@ def main(binpuz: bool):
         print(colour.RESET, end="")
 
         binary = BinaryPuzzle(string)
-    elif not code.isdigit() or int(code) not in [8, 14, 61, 62, 63, 64, 65, 66, 67, 68, 69, 610, 611, 612, 613]:
+    elif not code.isdigit() or int(code) not in [0, 8, 14, 61, 62, 63, 64, 65, 66, 67, 68, 69, 610, 611, 612, 613]:
         print(f"{colour.RED}You must enter a valid option!{colour.RESET}")
         time.sleep(3)
         print()
