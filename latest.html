@@ -2,6 +2,28 @@
 <html>
     <head>
         <link rel="icon" href="images/binarypuzzle.png" />
-        <meta http-equiv="refresh" content="0; URL=puz113.html" />
+        <script>
+            fetch("https://api.github.com/repos/aiden2480/binary-puzzle/contents").then((prom) => {
+                prom.json().then((result) => {
+                    var files = [];
+                    var version = 0;
+                    var _verstring;
+                    
+                    /* Pull file names from JSON result */
+                    for (let i = 0; i < result.length; i++) {
+                        files.push(result[i]["name"]);
+                    }
+
+                    /* Calculate latest version */
+                    do {
+                        version += 1;
+                        _verstring = "puz1" + String(version + 1).padStart(2, "0") + ".html";
+                    } while (files.indexOf(_verstring) != -1);
+
+                    /* Navigate */
+                    window.location = "puz1" + String(version).padStart(2, "0") + ".html";
+                });
+            });
+        </script>
     </head>
 </html>
