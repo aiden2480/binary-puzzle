@@ -39,8 +39,8 @@ def main(binpuz: bool):
     #   print(f"Enter {colour.CYAN}6{colour.RESET} and then a digit between 1 and 13 for the corresponding 6x6 puzzle. ", end="")
     #   print(f"{colour.GREEN}e.g.{colour.RESET} {colour.CYAN}61{colour.RESET} or {colour.CYAN}612{colour.RESET}")
     
-    #   print(f"Enter {colour.CYAN}8{colour.RESET} for an 8x8 puzzle")
-    #   print(f"Enter {colour.CYAN}14{colour.RESET} for a 14x14 puzzle")
+    print(f"Enter {colour.CYAN}8{colour.RESET} for an 8x8 puzzle")
+    print(f"Enter {colour.CYAN}14{colour.RESET} for a 14x14 puzzle")
     #   print(f"You may also enter {colour.CYAN}\"custom\"{colour.RESET} to enter custom puzzle data (any size)")
 
     code = input(f"\n{colour.BLUE}> {colour.CYAN}").strip().lower()
@@ -53,15 +53,26 @@ def main(binpuz: bool):
         time.sleep(3)
         print()
         return main(binpuz)
-    puzid = int(code)
+    else:
+        puzid = int(code)
     
+    # Load selected puzzle
     if puzid == 0:
         binary = BinaryPuzzle.example(0)
-        print(f"\n{colour.GREEN}INITIAL GRID{colour.RESET}")
-        binary.print()
+    elif puzid == 8:
+        binary = BinaryPuzzle.example(14) # Example 8x8 puzzle
+    elif puzid == 14:
+        binary = BinaryPuzzle.example(15) # Example 8x8 puzzle
 
-        input(f"{colour.MAGENTA}Random puzzle selected. Press enter to solve{colour.RESET}")
-        solve(binary)
+    # Print initial grid
+    print(f"\n{colour.GREEN}INITIAL GRID{colour.RESET}")
+    binary.print()
+    
+    # Solve puzzle
+    input(f"{colour.MAGENTA}Puzzle selected. Press enter to solve{colour.RESET}")
+    solve(binary)
+
+    # Enter to exit
     input(f"{colour.BLUE}Press enter to exit{colour.RESET}")
     
 
