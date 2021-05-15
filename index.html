@@ -33,38 +33,18 @@
 
     <!-- PWA stuff -->
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="images/binarypuzzle.png">
-    <script src="/upup.min.js"></script>
+    <link rel="apple-touch-icon" href="images/appleicon.png">
     <script>
-        UpUp.start({
-            "scope": "binary-puzzle/",
-            "assets": [
-                "/puz101.html", "/puz102.html", "/puz103.html",
-                "/puz104.html", "/puz105.html", "/puz106.html",
-                "/puz107.html", "/puz108.html", "/puz109.html",
-                "/puz110.html", "/puz111.html", "/puz112.html",
-                "/puz113.html", "/puz114.html",
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/binary-puzzle/sw.js", { scope: "/binary-puzzle/" })
+            .then(function(registration) {
+                console.log("[SW] Service Worker Registered");
+            });
 
-                "/puz101.js", "/puz102.js", "/puz103.js",
-                "/puz104.js", "/puz105.js", "/puz106.js",
-                "/puz107.js", "/puz108.js", "/puz109.js",
-                "/puz110.js", "/puz111.js", "/puz112.js",
-                "/puz113.js", "/puz114.js",
-
-                "/puz101.css", "/puz102.css", "/puz103.css",
-                "/puz104.css", "/puz105.css", "/puz106.css",
-                "/puz107.css", "/puz108.css", "/puz109.css",
-                "/puz110.css", "/puz111.css", "/puz112.css",
-                "/puz113.css", "/puz114.css",
-
-				"22a-2D_arrays.png", "22b-DataTypes.png",
-				"22c-StructureChart.png", "22d-MainAlgorithm.png",
-				"22e-reusableCode.png", "22fi-SolveRowPairs-DeskCheck.png",
-				"22fii-Lines6and7.png", "22Gi-writeAlgorithm.png",
-				"22Gii-driverForTesting.png", "22_QuestionSetup.png",
-				"binarypuzzle.png", "keyframes.gif", "techEdIcon.png",
-            ]
-        });
+            navigator.serviceWorker.ready.then(function(registration) {
+                console.log("[SW] Service Worker Ready");
+            });
+        }
     </script>
 
     <!-- Opengraph tags -->
