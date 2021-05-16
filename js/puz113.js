@@ -363,6 +363,11 @@ function attachClickScript() {
         button.innerText = conversion[button.innerText] || "0";
         window.current[Number(decon[0])][Number(decon[1])] = Number(button.innerText);
 
+        // Display message immediately if correct
+        if (isGridFull() && (isGridCorrect() == true)) {
+            return processSolveStatus();
+        }
+
         // Update solve status - delay only if cell was previously blank
         setTimeout(() => {
             if (lastedit == now) {
