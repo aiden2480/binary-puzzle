@@ -22,8 +22,7 @@ var lastedit;   // Datestamp of when the last cell was edited. Used to determine
 function loadGrid(grid) {
     /* 21/4/21 - Fills in the grid from a one-dimensional template (converts to 2D) */
     if (!Number.isInteger(Math.sqrt(grid.length))) {
-        console.error(`Invalid grid (length ${grid.length}):`);
-        console.log(grid);
+        console.error(`Invalid grid (length ${grid.length})\n`, grid);
         
         alert("The selected grid couldn't be loaded. It does not contain a square number of elements.");
         return;
@@ -33,8 +32,7 @@ function loadGrid(grid) {
     window.current = convert1Dto2D(grid);
     
     console.clear();
-    console.log("Loading array:");
-    console.log(JSON.parse(JSON.stringify(current)));
+    console.log("Loading array\n", JSON.parse(JSON.stringify(current)));
 
     /* Create a table of the appropriate size */
     createTable();
@@ -296,8 +294,7 @@ function updateWebpage(parentFunc) {
     }
 
     /* Log action */
-    console.log(`Ran ${parentFunc}(). ${updated} cell${updated != 1 ? "s" : ""} updated`);
-    console.log(JSON.parse(JSON.stringify(current))); // Deepcopy so it will print properly
+    console.log(`Ran ${parentFunc}(). ${updated} cell${updated != 1 ? "s" : ""} updated\n`, JSON.parse(JSON.stringify(current)));
     return updated; // This will be useful later in `solveFully()`
 }
 
