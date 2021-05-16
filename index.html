@@ -29,13 +29,29 @@
             font-size: 105%;
             border-radius: 3px;
         }
+
+        button {
+            cursor: pointer;
+            border-width: 2px;
+            border-radius: 2px;
+            border-color: #7289DA;
+        }
+
+        #pwa-installer {
+            opacity: 0;
+            transition: opacity 300ms ease-in-out;
+        }
+
+        #pwa-installer.available {
+            opacity: 1;
+        }
     </style>
 
     <!-- PWA stuff -->
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="images/appleicon.png">
     <script>
-        if ("serviceWorker" in navigator) {
+        if ("serviceWorker" in navigator && !["localhost", "127.0.0.1", ""].includes(window.location.hostname)) {
             navigator.serviceWorker.register("/binary-puzzle/sw.js", { scope: "/binary-puzzle/" })
             .then(function(registration) {
                 console.log("[SW] Service Worker Registered");
@@ -45,6 +61,13 @@
                 console.log("[SW] Service Worker Ready");
             });
         }
+
+        var installPrompt;
+        window.addEventListener("beforeinstallprompt", (e) => {
+            e.preventDefault();
+            installPrompt = e;
+            document.getElementById("pwa-installer").classList.add("available");
+        });
     </script>
 
     <!-- Opengraph tags -->
@@ -60,12 +83,14 @@
     <div id="header">
         <h1>Binary Puzzle Game (6x6)</h1>
         <h2>Aiden Gardner 11SDD6 2021</h2>
-        <p><a href="https://github.com/aiden2480/binary-puzzle/">GitHub repository</a></p>
+        <button onclick="window.location.href='https://github.com/aiden2480/binary-puzzle/'">GitHub repository</button>
+        <button onclick="window.location.href='latest.html'">Latest Version</button>
+        <button onclick="installPrompt.prompt()" id="pwa-installer">Install App</button>
     </div>
     <br />
 
     <!-- Version links -->
-    <h3>Links to versions are below. See also the <a href="https://github.com/aiden2480/binary-puzzle/tree/main/python" target="_blank">Python version</a>. <a href="latest.html">Latest version</a></h3>
+    <h3>Links to versions are below. See also the <a href="https://github.com/aiden2480/binary-puzzle/tree/main/python" target="_blank">Python version</a>.</h3>
     <p><a href="puz101.html">v1.01</a> - A blank shell ready for some unique, innovative code</p>
     <p><a href="puz102.html">v1.02</a> - A 36 grid can be loaded in through a "grunt" method</p>
     <p><a href="puz103.html">v1.03</a> - Box borders cleaned and CSS/JS have been moved to separate files and updated</p>

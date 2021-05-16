@@ -1,6 +1,14 @@
-const version = "2021.05.15";
-const cacheName = `binarypuzzle-${version}`;
+const version = "2021.05.16";
 const currentVersion = 13;
+var cacheName = `binarypuzzle-${version}`;
+
+if (self.navigator.onLine) { // Update cache if online
+    fetch("https://api.github.com/repos/aiden2480/binary-puzzle/commits").then((resp) => {
+        resp.json().then((data) => {
+            self.cacheName = `binarypuzzle-${data[0]["sha"].slice(0, 7)}`;
+        })
+    })
+}
 
 self.addEventListener("install", e => {
     e.waitUntil(

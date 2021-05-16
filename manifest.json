@@ -6,7 +6,7 @@
     "background_color": "#7289da",
     "display": "standalone",
     "orientation": "any",
-    "start_url": "",
+    "start_url": "/binary-puzzle/",
     "icons": [
         {
             "src": "images/binarypuzzle.png",
