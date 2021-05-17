@@ -1,20 +1,20 @@
 // Grid format: G(size: one digit)(array no: two digits)
-var G601 = [1, null, 0, null, 0, 0, null, 1, null, 0, 0, null, null, null, null, null, null, 0, 0, null, null, 1, null, null, 1, 0, null, 1, 1, null, null, 0, null, null, 1, 1];
-var G602 = [null, null, null, null, null, null, null, 1, null, null, null, 1, null, 1, null, 1, null, null, null, null, 0, null, null, 1, null, 1, null, null, null, null, null, null, null, 0, 0, null];
-var G603 = [null, 1, null, null, null, null, null, null, null, 0, null, 0, null, 0, null, 0, null, null, 1, null, null, null, 1, null, null, null, null, null, 0, null, 0, null, null, null, null, null];
-var G604 = [0, null, null, 1, null, null, null, 0, null, null, null, 1, null, null, 1, 1, null, null, null, null, null, null, 1, 1, null, null, null, null, null, 0, 0, null, 1, null, 1, null];
-var G605 = [null, null, null, null, null, null, null, 1, null, 1, null, 1, null, null, 0, 0, null, null, 0, null, null, null, null, null, null, null, null, null, 1, 1, null, null, 0, null, 0, null];
-var G606 = [null, null, null, null, null, 0, null, 1, null, null, 1, null, null, null, null, 0, null, null, null, null, 1, null, null, null, null, null, 1, null, null, null, null, 0, null, null, 1, null];
-var G607 = [1, null, 1, null, null, 1, null, null, null, 1, null, null, 0, null, null, 1, 0, null, null, null, 1, null, null, null, null, 1, null, null, null, null, 1, null, null, 1, 1, null];
-var G608 = [1, 1, null, null, null, null, 1, null, null, 1, null, null, null, null, null, null, 0, null, 0, null, 0, null, null, null, null, null, null, null, null, null, null, null, 0, null, 0, null];
-var G609 = [null, null, 0, 0, null, 0, null, null, null, null, null, null, null, 1, 1, null, null, null, null, null, null, null, 0, 0, null, null, 1, null, 0, null, null, null, null, null, null, null];
-var G610 = [null, null, null, null, null, null, null, 1, null, null, null, null, null, null, 0, null, 1, 1, null, null, 0, null, null, null, null, 0, null, null, 1, null, null, null, null, null, null, null];
-var G611 = [null, 1, null, 1, null, 1, null, null, null, null, null, null, 0, 0, null, null, null, null, null, null, null, null, 1, null, 0, null, 1, 0, null, null, null, 1, null, null, null, null];
-var G612 = [0, null, null, null, null, null, null, 1, 1, null, null, null, null, null, 1, null, null, null, null, null, null, 0, null, null, 0, null, null, 1, null, null, null, null, null, null, null, null];
-var G613 = [null, null, null, 1, null, null, null, null, null, null, null, 0, null, null, null, null, 0, 0, null, null, null, null, 1, null, 1, null, null, null, null, null, null, 0, null, 0, null, 0];
-var G801 = [null, null, null, null, null, null, null, 0, null, 0, 0, null, null, 1, null, null, null, 0, null, null, null, 1, null, 0, null, null, 1, null, null, null, null, null, 0, 0, null, 1, null, null, 1, null, null, null, null, null, 1, null, null, null, 1, 1, null, null, null, 0, null, 1, null, 1, null, null, null, null, null, 1];
-var G141 = [null, 0, 0, null, null, 1, 1, null, 1, null, 0, 0, null, 0, null, null, null, null, null, null, null, null, null, null, null, 0, null, null, null, 0, 0, null, null, null, null, 1, 1, null, null, null, 1, null, null, 0, null, 1, 1, null, 0, null, null, null, 0, null, null, null, null, null, null, null, 1, null, null, null, null, null, null, null, null, null, 0, 1, null, null, null, null, null, null, 0, null, 1, 1, null, 1, null, null, null, 0, null, null, 1, null, null, 0, null, null, null, null, null, 0, null, null, null, null, null, null, null, null, null, null, null, 0, null, null, null, null, 1, null, 0, 0, null, 1, null, null, 0, 0, null, 1, 1, null, null, null, 0, 0, null, null, null, null, 0, null, 0, null, null, null, null, null, null, null, null, null, null, 1, null, null, null, 0, null, null, null, null, null, null, null, null, 1, null, null, null, 1, null, null, null, null, null, 1, 1, null, 0, null, 0, null, 0, null, 1, null, null, 0, null, null, 1, null, null, null, 0, null, 1];
-var GEMP = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+const G601 = [1, null, 0, null, 0, 0, null, 1, null, 0, 0, null, null, null, null, null, null, 0, 0, null, null, 1, null, null, 1, 0, null, 1, 1, null, null, 0, null, null, 1, 1];
+const G602 = [null, null, null, null, null, null, null, 1, null, null, null, 1, null, 1, null, 1, null, null, null, null, 0, null, null, 1, null, 1, null, null, null, null, null, null, null, 0, 0, null];
+const G603 = [null, 1, null, null, null, null, null, null, null, 0, null, 0, null, 0, null, 0, null, null, 1, null, null, null, 1, null, null, null, null, null, 0, null, 0, null, null, null, null, null];
+const G604 = [0, null, null, 1, null, null, null, 0, null, null, null, 1, null, null, 1, 1, null, null, null, null, null, null, 1, 1, null, null, null, null, null, 0, 0, null, 1, null, 1, null];
+const G605 = [null, null, null, null, null, null, null, 1, null, 1, null, 1, null, null, 0, 0, null, null, 0, null, null, null, null, null, null, null, null, null, 1, 1, null, null, 0, null, 0, null];
+const G606 = [null, null, null, null, null, 0, null, 1, null, null, 1, null, null, null, null, 0, null, null, null, null, 1, null, null, null, null, null, 1, null, null, null, null, 0, null, null, 1, null];
+const G607 = [1, null, 1, null, null, 1, null, null, null, 1, null, null, 0, null, null, 1, 0, null, null, null, 1, null, null, null, null, 1, null, null, null, null, 1, null, null, 1, 1, null];
+const G608 = [1, 1, null, null, null, null, 1, null, null, 1, null, null, null, null, null, null, 0, null, 0, null, 0, null, null, null, null, null, null, null, null, null, null, null, 0, null, 0, null];
+const G609 = [null, null, 0, 0, null, 0, null, null, null, null, null, null, null, 1, 1, null, null, null, null, null, null, null, 0, 0, null, null, 1, null, 0, null, null, null, null, null, null, null];
+const G610 = [null, null, null, null, null, null, null, 1, null, null, null, null, null, null, 0, null, 1, 1, null, null, 0, null, null, null, null, 0, null, null, 1, null, null, null, null, null, null, null];
+const G611 = [null, 1, null, 1, null, 1, null, null, null, null, null, null, 0, 0, null, null, null, null, null, null, null, null, 1, null, 0, null, 1, 0, null, null, null, 1, null, null, null, null];
+const G612 = [0, null, null, null, null, null, null, 1, 1, null, null, null, null, null, 1, null, null, null, null, null, null, 0, null, null, 0, null, null, 1, null, null, null, null, null, null, null, null];
+const G613 = [null, null, null, 1, null, null, null, null, null, null, null, 0, null, null, null, null, 0, 0, null, null, null, null, 1, null, 1, null, null, null, null, null, null, 0, null, 0, null, 0];
+const G801 = [null, null, null, null, null, null, null, 0, null, 0, 0, null, null, 1, null, null, null, 0, null, null, null, 1, null, 0, null, null, 1, null, null, null, null, null, 0, 0, null, 1, null, null, 1, null, null, null, null, null, 1, null, null, null, 1, 1, null, null, null, 0, null, 1, null, 1, null, null, null, null, null, 1];
+const G141 = [null, 0, 0, null, null, 1, 1, null, 1, null, 0, 0, null, 0, null, null, null, null, null, null, null, null, null, null, null, 0, null, null, null, 0, 0, null, null, null, null, 1, 1, null, null, null, 1, null, null, 0, null, 1, 1, null, 0, null, null, null, 0, null, null, null, null, null, null, null, 1, null, null, null, null, null, null, null, null, null, 0, 1, null, null, null, null, null, null, 0, null, 1, 1, null, 1, null, null, null, 0, null, null, 1, null, null, 0, null, null, null, null, null, 0, null, null, null, null, null, null, null, null, null, null, null, 0, null, null, null, null, 1, null, 0, 0, null, 1, null, null, 0, 0, null, 1, 1, null, null, null, 0, 0, null, null, null, null, 0, null, 0, null, null, null, null, null, null, null, null, null, null, 1, null, null, null, 0, null, null, null, null, null, null, null, null, 1, null, null, null, 1, null, null, null, null, null, 1, 1, null, 0, null, 0, null, 0, null, 1, null, null, 0, null, null, 1, null, null, null, 0, null, 1];
+const GEMP = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
 var current;    // Will be a two-dimensional array. Synced with the HTML board
 var size;       // Much better to have this as a global variable than calculate it every time
 var lastedit;   // Datestamp of when the last cell was edited. Used to determine if `processSolveStatus` should be caleld
@@ -159,7 +159,7 @@ function solveTrios() {
         for (let i = 0; i < size; i++) {    /* "i" is col pos */
             if (i > 0 && i < (size - 1)) {  /* The selected cell isn't at either end of the row */
                 let concatenation = `${current[j][i - 1]}${current[j][i]}${current[j][i + 1]}`;
-                var match = concatenation.match(regex);
+                let match = concatenation.match(regex);
                 if (match) {
                     current[j][i] = match[1] == "0" ? 1 : 0;
                 }
@@ -167,7 +167,7 @@ function solveTrios() {
 
             if (j > 0 && j < (size - 1)) {  /* The selected cell isn't at either end of the column */
                 let concatenation = `${current[j - 1][i]}${current[j][i]}${current[j + 1][i]}`;
-                var match = concatenation.match(regex);
+                let match = concatenation.match(regex);
                 if (match) {
                     current[j][i] = match[1] == "0" ? 1 : 0;
                 }
